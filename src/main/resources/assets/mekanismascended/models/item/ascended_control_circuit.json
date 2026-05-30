@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": { 
+        "layer0": "mekanismascended:item/ascended_control_circuit"
+    }
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "mekanism:block/transmitter/small/small",
+  "textures": {
+    "side": "mekanismascended:block/models/multipart/ascended_pressurized_tube_vertical",
+    "center_down": "mekanismascended:block/models/multipart/ascended_pressurized_tube",
+    "side_opaque": "mekanismascended:block/models/multipart/opaque/ascended_pressurized_tube_vertical",
+    "center_opaque": "mekanismascended:block/models/multipart/ascended_pressurized_tube"
+  }
+}
