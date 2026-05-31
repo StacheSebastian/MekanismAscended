@@ -17,7 +17,7 @@ public class AscendedTierValues {
     public static double ASCENDED_THERMODYNAMIC_CONDUCTOR_HEAT_CAPACITY = HeatAPI.DEFAULT_HEAT_CAPACITY; //ULTIMATE: HeatAPI.DEFAULT_HEAT_CAPACITY (1)
     public static double ASCENDED_THERMODYNAMIC_CONDUCTOR_INSULATION = 100 * 100000; //ULTIMATE: 100000
 
-    public static int ASCENDED_LOGISTICAL_TRANSPORTER_SPEED = 100; //ULTIMATE: 50 (Max: 100, any bigger value would need multiple updates per tick, workaround not worth performance risk)
+    public static int ASCENDED_LOGISTICAL_TRANSPORTER_SPEED = 50; //ULTIMATE: 50 (Max: 100, any bigger value would need multiple updates per tick, workaround not worth performance risk) (Animation is skipped at 100)
     public static int ASCENDED_LOGISTICAL_TRANSPORTER_PULL_AMOUNT = 4 * 64; //ULTIMATE: 64
 
     public static int ASCENDED_PRESSURIZED_TUBE_CAPACITY = 16 * 1024 * FluidType.BUCKET_VOLUME; //ULTIMATE: 1024 * FluidType.BUCKET_VOLUME
