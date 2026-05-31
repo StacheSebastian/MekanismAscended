@@ -7,14 +7,16 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.stachesebastian.mekanismascended.MekanismAscended;
 import net.stachesebastian.mekanismascended.common.item.AscendedItem;
+import net.stachesebastian.mekanismascended.common.item.AscendedItemAlloy;
+import net.stachesebastian.mekanismascended.common.tier.AscendedAlloyTier;
 
 public class AscendedItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MekanismAscended.MODID);
 
     //Items
-    public static final DeferredItem<AscendedItem> ALLOY_ASCENDED = ITEMS.register(
+    public static final DeferredItem<AscendedItemAlloy> ALLOY_ASCENDED = ITEMS.register(
           "alloy_ascended",
-          () -> new AscendedItem(new Item.Properties().rarity(Rarity.EPIC))
+          () -> new AscendedItemAlloy(AscendedAlloyTier.ASCENDED, new Item.Properties().rarity(Rarity.EPIC))
     );
 
     public static final DeferredItem<AscendedItem> ASCENDED_CONTROL_CIRCUIT = ITEMS.register(

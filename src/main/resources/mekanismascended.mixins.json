@@ -8,6 +8,7 @@
     "LogisticalTransporterBaseMixin",
     "MechanicalPipeMixin",
     "PressurizedTubeMixin",
+    "TileEntityTransmitterUpgradeMixin",
     "ThermodynamicConductorMixin"
   ],
   "client": [
