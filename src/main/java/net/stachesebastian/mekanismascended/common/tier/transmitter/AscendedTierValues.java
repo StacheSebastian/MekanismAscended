@@ -19,6 +19,7 @@ public class AscendedTierValues {
 
     public static int ASCENDED_LOGISTICAL_TRANSPORTER_SPEED = 50; //ULTIMATE: 50 (Max: 100, any bigger value would need multiple updates per tick, workaround not worth performance risk) (Animation is skipped at 100)
     public static int ASCENDED_LOGISTICAL_TRANSPORTER_PULL_AMOUNT = 4 * 64; //ULTIMATE: 64
+    public static int ASCENDED_LOGISTICAL_TRANSPORTER_PULL_DELAY = 5; //ULTIMATE: 10 (Changed Delay to substitute unchanged Transporter Speed)
 
     public static int ASCENDED_PRESSURIZED_TUBE_CAPACITY = 16 * 1024 * FluidType.BUCKET_VOLUME; //ULTIMATE: 1024 * FluidType.BUCKET_VOLUME
     public static int ASCENDED_PRESSURIZED_TUBE_PULL_AMOUNT = 16 * 256 * FluidType.BUCKET_VOLUME; //ULTIMATE: 256 * FluidType.BUCKET_VOLUME

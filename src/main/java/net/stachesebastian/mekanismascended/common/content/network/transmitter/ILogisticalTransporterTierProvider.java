@@ -5,4 +5,6 @@ public interface ILogisticalTransporterTierProvider {
     int getTransporterSpeed();
 
     int getTransporterPullAmount();
+
+    int getTransporterPullDelay();
 }

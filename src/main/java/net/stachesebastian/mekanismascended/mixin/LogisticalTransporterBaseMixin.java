@@ -5,6 +5,8 @@ import mekanism.common.tier.TransporterTier;
 import net.stachesebastian.mekanismascended.common.content.network.transmitter.ILogisticalTransporterTierProvider;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(LogisticalTransporterBase.class)
@@ -30,5 +32,16 @@ public abstract class LogisticalTransporterBaseMixin {
             return provider.getTransporterPullAmount();
         }
         return tier.getPullAmount();
+    }
+
+    @ModifyConstant(
+          method = "onUpdateServer",
+          constant = @Constant(intValue = 10)
+    )
+    private int mekanismAscended$getTransporterPullDelay(int original) {
+        if (this instanceof ILogisticalTransporterTierProvider provider) {
+            return provider.getTransporterPullDelay();
+        }
+        return original;
     }
 }

@@ -24,6 +24,11 @@ public class AscendedLogisticalTransporter extends LogisticalTransporter impleme
     }
 
     @Override
+    public int getTransporterPullDelay() {
+        return AscendedTierValues.ASCENDED_LOGISTICAL_TRANSPORTER_PULL_DELAY;
+    }
+
+    @Override
     public double getCost() {
         return TransporterTier.ULTIMATE.getSpeed() / (double) getTransporterSpeed();
     }

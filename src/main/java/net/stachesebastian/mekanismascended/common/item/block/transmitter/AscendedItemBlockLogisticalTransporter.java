@@ -5,7 +5,6 @@ import mekanism.common.MekanismLang;
 import mekanism.common.block.transmitter.BlockLargeTransmitter;
 import mekanism.common.item.block.transmitter.ItemBlockTransporter;
 import mekanism.common.tier.TransporterTier;
-import mekanism.common.util.MekanismUtils;
 import mekanism.common.util.UnitDisplayUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.SharedConstants;
@@ -38,7 +37,7 @@ public class AscendedItemBlockLogisticalTransporter extends ItemBlockTransporter
         //Ensure no one somehow passes in invalid data
         float tickRate = Math.max(context.tickRate(), TickRateManager.MIN_TICKRATE);
         float speed = AscendedTierValues.ASCENDED_LOGISTICAL_TRANSPORTER_SPEED / (5 * SharedConstants.TICKS_PER_SECOND / tickRate);
-        float pull = AscendedTierValues.ASCENDED_LOGISTICAL_TRANSPORTER_PULL_AMOUNT * tickRate / MekanismUtils.TICKS_PER_HALF_SECOND;
+        float pull = AscendedTierValues.ASCENDED_LOGISTICAL_TRANSPORTER_PULL_AMOUNT * tickRate / AscendedTierValues.ASCENDED_LOGISTICAL_TRANSPORTER_PULL_DELAY;
         tooltip.add(MekanismLang.SPEED.translateColored(EnumColor.INDIGO, EnumColor.GRAY, UnitDisplayUtils.roundDecimals(speed)));
         tooltip.add(MekanismLang.PUMP_RATE.translateColored(EnumColor.INDIGO, EnumColor.GRAY, UnitDisplayUtils.roundDecimals(pull)));
     }
