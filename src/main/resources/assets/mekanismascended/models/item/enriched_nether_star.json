@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:item/generated",
     "textures": { 
-        "layer0": "mekanismascended:item/alloy_ascended"
+        "layer0": "mekanismascended:item/enriched_nether_star"
     }
 }

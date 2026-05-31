@@ -19,7 +19,7 @@ public class AscendedCreativeTabs {
           MekanismAscended.MODID,
           () -> CreativeModeTab.builder()
                   .title(Component.translatable("itemGroup.mekanismascended"))
-                  .icon(() -> AscendedItems.ALLOY_ASCENDED.get().getDefaultInstance())
+                  .icon(() -> AscendedItems.ALLOY_TRANSCENDENT.get().getDefaultInstance())
                   .withTabsBefore(MekanismCreativeTabs.MEKANISM.getKey())
                   .displayItems((parameters, output) -> {
                       AscendedItems.ITEMS.getEntries()

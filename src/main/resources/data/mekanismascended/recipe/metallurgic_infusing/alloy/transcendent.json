@@ -1,0 +1,16 @@
+{
+  "type": "mekanism:metallurgic_infusing",
+  "chemical_input": {
+    "amount": 80,
+    "chemical": "mekanismascended:transcendent_essence"
+  },
+  "item_input": {
+    "count": 1,
+    "tag": "mekanism:alloys/atomic"
+  },
+  "output": {
+    "count": 1,
+    "id": "mekanismascended:alloy_transcendent"
+  },
+  "per_tick_usage": false
+}

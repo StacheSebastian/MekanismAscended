@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:chemical_conversion",
+  "input": {
+    "count": 1,
+    "item": "mekanismascended:enriched_nether_star"
+  },
+  "output": {
+    "amount": 80,
+    "id": "mekanismascended:transcendent_essence"
+  }
+}

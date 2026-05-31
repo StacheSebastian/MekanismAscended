@@ -4,7 +4,7 @@ import mekanism.api.tier.BaseTier;
 import mekanism.api.tier.IAlloyTier;
 
 public enum AscendedAlloyTier implements IAlloyTier {
-    ASCENDED;
+    TRANSCENDENT;
 
     @Override
     public int getBaseTierLevel() {

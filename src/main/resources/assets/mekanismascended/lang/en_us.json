@@ -1,9 +1,12 @@
 {
   "itemGroup.mekanismascended": "Mekanism: Ascended",
 
-  "item.mekanismascended.alloy_ascended": "Alloy Ascended",
+  "item.mekanismascended.alloy_transcendent": "Transcendent Alloy",
   "item.mekanismascended.ascended_control_circuit": "Ascended Control Circuit",
   "item.mekanismascended.ascended_tier_installer": "Ascended Tier Installer",
+  "item.mekanismascended.enriched_nether_star": "Enriched Nether Star",
+
+  "chemical.mekanismascended.transcendent_essence": "Transcendent Essence",
 
   "block.mekanismascended.ascended_universal_cable": "Ascended Universal Cable",
   "block.mekanismascended.ascended_pressurized_tube": "Ascended Pressurized Tube",

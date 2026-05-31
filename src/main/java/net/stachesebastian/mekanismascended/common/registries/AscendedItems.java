@@ -14,9 +14,9 @@ public class AscendedItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MekanismAscended.MODID);
 
     //Items
-    public static final DeferredItem<AscendedItemAlloy> ALLOY_ASCENDED = ITEMS.register(
-          "alloy_ascended",
-          () -> new AscendedItemAlloy(AscendedAlloyTier.ASCENDED, new Item.Properties().rarity(Rarity.EPIC))
+    public static final DeferredItem<AscendedItemAlloy> ALLOY_TRANSCENDENT = ITEMS.register(
+          "alloy_transcendent",
+          () -> new AscendedItemAlloy(AscendedAlloyTier.TRANSCENDENT, new Item.Properties().rarity(Rarity.EPIC))
     );
 
     public static final DeferredItem<AscendedItem> ASCENDED_CONTROL_CIRCUIT = ITEMS.register(
@@ -29,6 +29,10 @@ public class AscendedItems {
             () -> new AscendedItem(new Item.Properties().rarity(Rarity.EPIC))
     );
 
+    public static final DeferredItem<Item> ENRICHED_NETHER_STAR = ITEMS.register(
+            "enriched_nether_star",
+            () -> new Item(new Item.Properties().rarity(Rarity.EPIC))
+    );
 
     //BlockItems
 
