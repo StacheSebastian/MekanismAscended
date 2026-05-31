@@ -5,5 +5,9 @@
   "item.mekanismascended.ascended_control_circuit": "Ascended Control Circuit",
   "item.mekanismascended.ascended_tier_installer": "Ascended Tier Installer",
 
-  "block.mekanismascended.ascended_universal_cable": "Ascended Universal Cable"
+  "block.mekanismascended.ascended_universal_cable": "Ascended Universal Cable",
+  "block.mekanismascended.ascended_pressurized_tube": "Ascended Pressurized Tube",
+  "block.mekanismascended.ascended_thermodynamic_conductor": "Ascended Thermodynamic Conductor",
+  "block.mekanismascended.ascended_mechanical_pipe": "Ascended Mechanical Pipe",
+  "block.mekanismascended.ascended_logistical_transporter": "Ascended Logistical Transporter"
 }
