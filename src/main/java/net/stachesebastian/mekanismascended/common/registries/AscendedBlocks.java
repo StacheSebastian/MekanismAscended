@@ -1,11 +1,25 @@
 package net.stachesebastian.mekanismascended.common.registries;
 
+import mekanism.common.attachments.containers.ContainerType;
+import mekanism.common.attachments.containers.chemical.ChemicalTanksBuilder;
+import mekanism.common.attachments.containers.fluid.FluidTanksBuilder;
+import mekanism.common.attachments.containers.item.ItemSlotsBuilder;
+import mekanism.common.block.basic.BlockFluidTank;
+import mekanism.common.block.prefab.BlockTile;
 import mekanism.common.block.transmitter.BlockLargeTransmitter;
 import mekanism.common.block.transmitter.BlockSmallTransmitter;
+import mekanism.common.content.blocktype.Machine;
 import mekanism.common.registration.impl.BlockDeferredRegister;
 import mekanism.common.registration.impl.BlockRegistryObject;
+import mekanism.common.tile.TileEntityChemicalTank;
+import mekanism.common.tile.TileEntityFluidTank;
+import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.stachesebastian.mekanismascended.MekanismAscended;
+import net.stachesebastian.mekanismascended.common.attachments.containers.chemical.AscendedComponentBackedChemicalTank;
+import net.stachesebastian.mekanismascended.common.attachments.containers.fluid.AscendedComponentBackedFluidTank;
+import net.stachesebastian.mekanismascended.common.item.block.AscendedItemBlockChemicalTank;
+import net.stachesebastian.mekanismascended.common.item.block.AscendedItemBlockFluidTank;
 import net.stachesebastian.mekanismascended.common.item.block.transmitter.AscendedItemBlockLogisticalTransporter;
 import net.stachesebastian.mekanismascended.common.item.block.transmitter.AscendedItemBlockMechanicalPipe;
 import net.stachesebastian.mekanismascended.common.item.block.transmitter.AscendedItemBlockPressurizedTube;
@@ -26,6 +40,29 @@ public class AscendedBlocks {
 
     public static final BlockRegistryObject<BlockLargeTransmitter<AscendedTEMechanicalPipe>, AscendedItemBlockMechanicalPipe> ASCENDED_MECHANICAL_PIPE = BLOCKS.register("ascended_mechanical_pipe", () -> new BlockLargeTransmitter<>(AscendedBlockTypes.ASCENDED_MECHANICAL_PIPE), AscendedItemBlockMechanicalPipe::new);
     public static final BlockRegistryObject<BlockLargeTransmitter<AscendedTELogisticalTransporter>, AscendedItemBlockLogisticalTransporter> ASCENDED_LOGISTICAL_TRANSPORTER = BLOCKS.register("ascended_logistical_transporter", () -> new BlockLargeTransmitter<>(AscendedBlockTypes.ASCENDED_LOGISTICAL_TRANSPORTER), AscendedItemBlockLogisticalTransporter::new);
+
+    public static final BlockRegistryObject<BlockFluidTank, AscendedItemBlockFluidTank> ASCENDED_FLUID_TANK = BLOCKS.register("ascended_fluid_tank", () -> new BlockFluidTank(AscendedBlockTypes.ASCENDED_FLUID_TANK), AscendedItemBlockFluidTank::new)
+            .forItemHolder(holder -> holder
+                    .addAttachedContainerCapabilities(ContainerType.FLUID, () -> FluidTanksBuilder.builder()
+                            .addTank(AscendedComponentBackedFluidTank::create)
+                            .build()
+                    ).addAttachmentOnlyContainers(ContainerType.ITEM, () -> ItemSlotsBuilder.builder()
+                            .addFluidInputSlot(0)
+                            .addOutput()
+                            .build()
+                    )
+            );
+
+    public static final BlockRegistryObject<BlockTile.BlockTileModel<TileEntityChemicalTank, Machine<TileEntityChemicalTank>>, AscendedItemBlockChemicalTank> ASCENDED_CHEMICAL_TANK = BLOCKS.register("ascended_chemical_tank", () -> new BlockTile.BlockTileModel<>(AscendedBlockTypes.ASCENDED_CHEMICAL_TANK, properties -> properties.mapColor(MapColor.GOLD)), AscendedItemBlockChemicalTank::new)
+            .forItemHolder(holder -> holder
+                    .addAttachedContainerCapabilities(ContainerType.CHEMICAL, () -> ChemicalTanksBuilder.builder()
+                            .addTank(AscendedComponentBackedChemicalTank::create).build()
+                    ).addAttachmentOnlyContainers(ContainerType.ITEM, () -> ItemSlotsBuilder.builder()
+                            .addChemicalDrainSlot(0)
+                            .addChemicalFillSlot(0)
+                            .build()
+                    )
+            );
 
     private AscendedBlocks() {}
 

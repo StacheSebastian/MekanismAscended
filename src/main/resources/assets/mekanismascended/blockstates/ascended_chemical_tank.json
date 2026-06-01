@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mekanismascended:block/chemical_tank/ascended"
+    },
+    "facing=south": {
+      "model": "mekanismascended:block/chemical_tank/ascended",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "mekanismascended:block/chemical_tank/ascended",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "mekanismascended:block/chemical_tank/ascended",
+      "y": -90
+    }
+  }
+}

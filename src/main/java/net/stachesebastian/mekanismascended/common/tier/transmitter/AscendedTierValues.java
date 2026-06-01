@@ -24,5 +24,14 @@ public class AscendedTierValues {
     public static int ASCENDED_PRESSURIZED_TUBE_CAPACITY = 16 * 1024 * FluidType.BUCKET_VOLUME; //ULTIMATE: 1024 * FluidType.BUCKET_VOLUME
     public static int ASCENDED_PRESSURIZED_TUBE_PULL_AMOUNT = 16 * 256 * FluidType.BUCKET_VOLUME; //ULTIMATE: 256 * FluidType.BUCKET_VOLUME
 
+    //Fluid Tank
+    public static int ASCENDED_FLUID_TANK_COLOR = 0xFFFFAA00;
+    public static int ASCENDED_FLUID_TANK_CAPACITY = 16 * 256 * FluidType.BUCKET_VOLUME; //ULTIMATE: 256 * FluidType.BUCKET_VOLUME
+    public static int ASCENDED_FLUID_TANK_OUTPUT = 16 * 64 * FluidType.BUCKET_VOLUME; //ULTIMATE: 64 * FluidType.BUCKET_VOLUME
+
+    //Chemical Tank
+    public static long ASCENDED_CHEMICAL_TANK_CAPACITY = 16 * 8192L * FluidType.BUCKET_VOLUME; //ULTIMATE: 8192 * FluidType.BUCKET_VOLUME
+    public static long ASCENDED_CHEMICAL_TANK_OUTPUT = 16 * 512L * FluidType.BUCKET_VOLUME; //ULTIMATE: 512 * FluidType.BUCKET_VOLUME
+
     public AscendedTierValues() {}
 }
