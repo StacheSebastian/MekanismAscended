@@ -4,18 +4,22 @@
   "package": "net.stachesebastian.mekanismascended.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "BasicFluidTankAccessor",
     "AttributeUpgradeableMixin",
+    "BasicEnergyContainerAccessor",
+    "BasicFluidTankAccessor",
     "CursedTransporterItemHandlerMixin",
+    "EnergyCubeEnergyContainerAccessor",
     "FluidTankFluidTankMixin",
     "LogisticalTransporterBaseMixin",
     "MechanicalPipeMixin",
     "PressurizedTubeMixin",
+    "ThermodynamicConductorMixin",
     "TileEntityChemicalTankAccessor",
     "TileEntityChemicalTankMixin",
+    "TileEntityEnergyCubeAccessor",
+    "TileEntityEnergyCubeMixin",
     "TileEntityFluidTankMixin",
-    "TileEntityTransmitterUpgradeMixin",
-    "ThermodynamicConductorMixin"
+    "TileEntityTransmitterUpgradeMixin"
   ],
   "client": [
     "GuiChemicalTankMixin"

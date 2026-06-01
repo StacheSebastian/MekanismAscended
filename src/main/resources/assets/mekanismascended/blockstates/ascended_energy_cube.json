@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=up": {
+      "model": "mekanismascended:block/energy_cube/ascended",
+      "x": -90
+    },
+    "facing=down": {
+      "model": "mekanismascended:block/energy_cube/ascended",
+      "x": 90
+    },
+    "facing=north": {
+      "model": "mekanismascended:block/energy_cube/ascended"
+    },
+    "facing=south": {
+      "model": "mekanismascended:block/energy_cube/ascended",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "mekanismascended:block/energy_cube/ascended",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "mekanismascended:block/energy_cube/ascended",
+      "y": -90
+    }
+  }
+}

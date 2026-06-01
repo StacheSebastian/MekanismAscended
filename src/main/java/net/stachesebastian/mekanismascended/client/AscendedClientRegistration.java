@@ -3,7 +3,9 @@ package net.stachesebastian.mekanismascended.client;
 import mekanism.client.ClientRegistrationUtil;
 import mekanism.client.render.RenderPropertiesProvider.MekRenderProperties;
 import mekanism.client.render.item.TransmitterTypeDecorator;
+import mekanism.client.render.item.block.RenderEnergyCubeItem;
 import mekanism.client.render.item.block.RenderFluidTankItem;
+import mekanism.client.render.tileentity.RenderEnergyCube;
 import mekanism.client.render.tileentity.RenderFluidTank;
 import mekanism.client.render.transmitter.RenderLogisticalTransporter;
 import mekanism.client.render.transmitter.RenderMechanicalPipe;
@@ -37,6 +39,7 @@ public class AscendedClientRegistration {
         ClientRegistrationUtil.bindTileEntityRenderer(event, RenderMechanicalPipe::new, AscendedTileEntityTypes.ASCENDED_MECHANICAL_PIPE);
         ClientRegistrationUtil.bindTileEntityRenderer(event, RenderLogisticalTransporter::new, AscendedTileEntityTypes.ASCENDED_LOGISTICAL_TRANSPORTER);
         ClientRegistrationUtil.bindTileEntityRenderer(event, RenderFluidTank::new, AscendedTileEntityTypes.ASCENDED_FLUID_TANK);
+        ClientRegistrationUtil.bindTileEntityRenderer(event, RenderEnergyCube::new, AscendedTileEntityTypes.ASCENDED_ENERGY_CUBE);
     }
 
     @SubscribeEvent
@@ -77,5 +80,6 @@ public class AscendedClientRegistration {
     @SubscribeEvent
     public static void registerClientExtensions(RegisterClientExtensionsEvent event) {
         ClientRegistrationUtil.registerItemExtensions(event, new MekRenderProperties(RenderFluidTankItem.RENDERER), AscendedBlocks.ASCENDED_FLUID_TANK);
+        ClientRegistrationUtil.registerItemExtensions(event, new MekRenderProperties(RenderEnergyCubeItem.RENDERER), AscendedBlocks.ASCENDED_ENERGY_CUBE);
     }
 }

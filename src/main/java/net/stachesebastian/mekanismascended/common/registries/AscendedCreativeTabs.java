@@ -1,6 +1,7 @@
 package net.stachesebastian.mekanismascended.common.registries;
 
 import mekanism.common.registries.MekanismCreativeTabs;
+import mekanism.common.registration.impl.CreativeTabDeferredRegister;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -22,10 +23,8 @@ public class AscendedCreativeTabs {
                   .icon(() -> AscendedItems.ALLOY_TRANSCENDENT.get().getDefaultInstance())
                   .withTabsBefore(MekanismCreativeTabs.MEKANISM.getKey())
                   .displayItems((parameters, output) -> {
-                      AscendedItems.ITEMS.getEntries()
-                              .forEach(item -> output.accept(item.value()));
-                      AscendedBlocks.BLOCKS.getSecondaryEntries()
-                              .forEach(item -> output.accept(item.value()));
+                      CreativeTabDeferredRegister.addToDisplay(AscendedItems.ITEMS, output);
+                      CreativeTabDeferredRegister.addToDisplay(AscendedBlocks.BLOCKS, output);
                   })
                   .build()
     );

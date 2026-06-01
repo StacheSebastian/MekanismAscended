@@ -15,7 +15,9 @@
   "block.mekanismascended.ascended_logistical_transporter": "Ascended Logistical Transporter",
   "block.mekanismascended.ascended_fluid_tank": "Ascended Fluid Tank",
   "block.mekanismascended.ascended_chemical_tank": "Ascended Chemical Tank",
+  "block.mekanismascended.ascended_energy_cube": "Ascended Energy Cube",
 
   "container.mekanismascended.ascended_fluid_tank": "Ascended Fluid Tank",
-  "container.mekanismascended.ascended_chemical_tank": "Ascended Chemical Tank"
+  "container.mekanismascended.ascended_chemical_tank": "Ascended Chemical Tank",
+  "container.mekanismascended.ascended_energy_cube": "Ascended Energy Cube"
 }

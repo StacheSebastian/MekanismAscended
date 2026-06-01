@@ -1,0 +1,6 @@
+{
+  "parent": "mekanism:block/energy_cube/base",
+  "textures": {
+    "corner": "mekanismascended:block/models/energy_cube_ascended_corner"
+  }
+}

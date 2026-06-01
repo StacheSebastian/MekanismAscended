@@ -7,6 +7,8 @@ import mekanism.common.integration.computer.ComputerCapabilityHelper;
 import mekanism.common.integration.energy.EnergyCompatUtils;
 import mekanism.common.registration.impl.TileEntityTypeDeferredRegister;
 import mekanism.common.registration.impl.TileEntityTypeRegistryObject;
+import mekanism.common.registries.MekanismBlocks;
+import mekanism.common.tile.TileEntityEnergyCube;
 import mekanism.common.tile.base.CapabilityTileEntity;
 import mekanism.common.tile.base.TileEntityMekanism;
 import mekanism.common.tile.TileEntityChemicalTank;
@@ -20,6 +22,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.stachesebastian.mekanismascended.MekanismAscended;
 import net.stachesebastian.mekanismascended.common.tile.AscendedTEChemicalTank;
+import net.stachesebastian.mekanismascended.common.tile.AscendedTEEnergyCube;
 import net.stachesebastian.mekanismascended.common.tile.AscendedTEFluidTank;
 import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTELogisticalTransporter;
 import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTEMechanicalPipe;
@@ -35,8 +38,26 @@ public class AscendedTileEntityTypes {
     public static final TileEntityTypeRegistryObject<AscendedTEPressurizedTube> ASCENDED_PRESSURIZED_TUBE = registerTube();
     public static final TileEntityTypeRegistryObject<AscendedTEThermodynamicConductor> ASCENDED_THERMODYNAMIC_CONDUCTOR = registerConductor();
     public static final TileEntityTypeRegistryObject<AscendedTELogisticalTransporter> ASCENDED_LOGISTICAL_TRANSPORTER = registerTransporter();
-    public static final TileEntityTypeRegistryObject<TileEntityFluidTank> ASCENDED_FLUID_TANK = registerFluidTank();
-    public static final TileEntityTypeRegistryObject<TileEntityChemicalTank> ASCENDED_CHEMICAL_TANK = registerChemicalTank();
+
+    public static final TileEntityTypeRegistryObject<TileEntityFluidTank> ASCENDED_FLUID_TANK =
+            TILE_ENTITY_TYPES.<TileEntityFluidTank>mekBuilder(AscendedBlocks.ASCENDED_FLUID_TANK, (pos, state) -> new AscendedTEFluidTank(AscendedBlocks.ASCENDED_FLUID_TANK, pos, state))
+                    .clientTicker(TileEntityMekanism::tickClient)
+                    .serverTicker(TileEntityMekanism::tickServer)
+                    .withSimple(Capabilities.CONFIG_CARD)
+                    .withSimple(Capabilities.CONFIGURABLE)
+                    .build();
+
+    public static final TileEntityTypeRegistryObject<TileEntityChemicalTank> ASCENDED_CHEMICAL_TANK =
+            TILE_ENTITY_TYPES.<TileEntityChemicalTank>mekBuilder(AscendedBlocks.ASCENDED_CHEMICAL_TANK, (pos, state) -> new AscendedTEChemicalTank(AscendedBlocks.ASCENDED_CHEMICAL_TANK, pos, state))
+                    .serverTicker(TileEntityMekanism::tickServer)
+                    .withSimple(Capabilities.CONFIG_CARD)
+                    .build();
+
+    public static final TileEntityTypeRegistryObject<TileEntityEnergyCube> ASCENDED_ENERGY_CUBE =
+            TILE_ENTITY_TYPES.<TileEntityEnergyCube>mekBuilder(AscendedBlocks.ASCENDED_ENERGY_CUBE, (pos, state) -> new AscendedTEEnergyCube(AscendedBlocks.ASCENDED_ENERGY_CUBE, pos, state))
+                    .serverTicker(TileEntityMekanism::tickServer)
+                    .withSimple(Capabilities.CONFIG_CARD)
+                    .build();
 
     private AscendedTileEntityTypes() {}
 
@@ -81,22 +102,6 @@ public class AscendedTileEntityTypes {
         return transmitterBuilder(AscendedBlocks.ASCENDED_LOGISTICAL_TRANSPORTER, AscendedTELogisticalTransporter::new)
                 .clientTicker(AscendedTELogisticalTransporter::tickClient)
                 .with(Capabilities.ITEM.block(), CapabilityTileEntity.ITEM_HANDLER_PROVIDER)
-                .build();
-    }
-
-    private static TileEntityTypeRegistryObject<TileEntityFluidTank> registerFluidTank() {
-        return TILE_ENTITY_TYPES.<TileEntityFluidTank>mekBuilder(AscendedBlocks.ASCENDED_FLUID_TANK, (pos, state) -> new AscendedTEFluidTank(AscendedBlocks.ASCENDED_FLUID_TANK, pos, state))
-                .clientTicker(TileEntityMekanism::tickClient)
-                .serverTicker(TileEntityMekanism::tickServer)
-                .withSimple(Capabilities.CONFIG_CARD)
-                .withSimple(Capabilities.CONFIGURABLE)
-                .build();
-    }
-
-    private static TileEntityTypeRegistryObject<TileEntityChemicalTank> registerChemicalTank() {
-        return TILE_ENTITY_TYPES.<TileEntityChemicalTank>mekBuilder(AscendedBlocks.ASCENDED_CHEMICAL_TANK, (pos, state) -> new AscendedTEChemicalTank(AscendedBlocks.ASCENDED_CHEMICAL_TANK, pos, state))
-                .serverTicker(TileEntityMekanism::tickServer)
-                .withSimple(Capabilities.CONFIG_CARD)
                 .build();
     }
 
