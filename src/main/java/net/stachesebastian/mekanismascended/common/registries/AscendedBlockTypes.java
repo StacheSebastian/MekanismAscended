@@ -38,7 +38,7 @@ public class AscendedBlockTypes {
                     )
                     .withGui(() -> mekanism.common.registries.MekanismContainerTypes.FLUID_TANK)
                     .withCustomShape(BlockShapes.FLUID_TANK)
-                    .with(new AttributeTier<>(FluidTankTier.ULTIMATE), new AttributeUpgradeable(null))
+                    .with(new AttributeTier<>(FluidTankTier.ULTIMATE))
                     .without(AttributeParticleFX.class, AttributeStateFacing.class, AttributeRedstone.class, AttributeUpgradeSupport.class)
                     .withComputerSupport(FluidTankTier.ULTIMATE, "FluidTank")
                     .build();
@@ -50,7 +50,7 @@ public class AscendedBlockTypes {
                     )
                     .withGui(() -> mekanism.common.registries.MekanismContainerTypes.CHEMICAL_TANK)
                     .withCustomShape(BlockShapes.CHEMICAL_TANK)
-                    .with(new AttributeTier<>(ChemicalTankTier.ULTIMATE), new AttributeUpgradeable(null))
+                    .with(new AttributeTier<>(ChemicalTankTier.ULTIMATE))
                     .withSideConfig(TransmissionType.CHEMICAL, TransmissionType.ITEM)
                     .without(AttributeParticleFX.class, AttributeStateActive.class, AttributeUpgradeSupport.class)
                     .withComputerSupport(ChemicalTankTier.ULTIMATE, "ChemicalTank")

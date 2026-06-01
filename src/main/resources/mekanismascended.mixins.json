@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "BasicFluidTankAccessor",
+    "AttributeUpgradeableMixin",
     "CursedTransporterItemHandlerMixin",
     "FluidTankFluidTankMixin",
     "LogisticalTransporterBaseMixin",

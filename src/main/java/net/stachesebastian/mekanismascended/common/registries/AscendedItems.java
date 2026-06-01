@@ -8,6 +8,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.stachesebastian.mekanismascended.MekanismAscended;
 import net.stachesebastian.mekanismascended.common.item.AscendedItem;
 import net.stachesebastian.mekanismascended.common.item.AscendedItemAlloy;
+import net.stachesebastian.mekanismascended.common.item.AscendedItemTierInstaller;
 import net.stachesebastian.mekanismascended.common.tier.AscendedAlloyTier;
 
 public class AscendedItems {
@@ -24,14 +25,14 @@ public class AscendedItems {
             () -> new AscendedItem(new Item.Properties().rarity(Rarity.EPIC))
     );
 
-    public static final DeferredItem<AscendedItem> ASCENDED_TIER_INSTALLER = ITEMS.register(
+    public static final DeferredItem<AscendedItemTierInstaller> ASCENDED_TIER_INSTALLER = ITEMS.register(
             "ascended_tier_installer",
-            () -> new AscendedItem(new Item.Properties().rarity(Rarity.EPIC))
+            () -> new AscendedItemTierInstaller(new Item.Properties().rarity(Rarity.EPIC))
     );
 
     public static final DeferredItem<Item> ENRICHED_NETHER_STAR = ITEMS.register(
             "enriched_nether_star",
-            () -> new Item(new Item.Properties().rarity(Rarity.EPIC))
+            () -> new Item(new Item.Properties())
     );
 
     //BlockItems
