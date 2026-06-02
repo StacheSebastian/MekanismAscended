@@ -11,6 +11,8 @@
     "EnergyCubeEnergyContainerAccessor",
     "FluidTankFluidTankMixin",
     "LogisticalTransporterBaseMixin",
+    "MatrixEnergyContainerMixin",
+    "MatrixValidatorMixin",
     "MechanicalPipeMixin",
     "PressurizedTubeMixin",
     "ThermodynamicConductorMixin",

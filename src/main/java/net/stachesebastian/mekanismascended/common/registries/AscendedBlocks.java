@@ -12,13 +12,18 @@ import mekanism.common.block.prefab.BlockTile;
 import mekanism.common.block.transmitter.BlockLargeTransmitter;
 import mekanism.common.block.transmitter.BlockSmallTransmitter;
 import mekanism.common.content.blocktype.BlockType;
+import mekanism.common.content.blocktype.BlockTypeTile;
 import mekanism.common.content.blocktype.Machine;
+import mekanism.common.item.block.ItemBlockInductionCell;
+import mekanism.common.item.block.ItemBlockInductionProvider;
 import mekanism.common.registration.impl.BlockDeferredRegister;
 import mekanism.common.registration.impl.BlockRegistryObject;
 import mekanism.common.registries.MekanismBlockTypes;
 import mekanism.common.tile.TileEntityChemicalTank;
 import mekanism.common.tile.TileEntityEnergyCube;
 import mekanism.common.tile.TileEntityFluidTank;
+import mekanism.common.tile.multiblock.TileEntityInductionCell;
+import mekanism.common.tile.multiblock.TileEntityInductionProvider;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -27,9 +32,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.stachesebastian.mekanismascended.MekanismAscended;
 import net.stachesebastian.mekanismascended.common.attachments.containers.chemical.AscendedComponentBackedChemicalTank;
 import net.stachesebastian.mekanismascended.common.attachments.containers.fluid.AscendedComponentBackedFluidTank;
-import net.stachesebastian.mekanismascended.common.item.block.AscendedItemBlockChemicalTank;
-import net.stachesebastian.mekanismascended.common.item.block.AscendedItemBlockEnergyCube;
-import net.stachesebastian.mekanismascended.common.item.block.AscendedItemBlockFluidTank;
+import net.stachesebastian.mekanismascended.common.item.block.*;
 import net.stachesebastian.mekanismascended.common.item.block.transmitter.AscendedItemBlockLogisticalTransporter;
 import net.stachesebastian.mekanismascended.common.item.block.transmitter.AscendedItemBlockMechanicalPipe;
 import net.stachesebastian.mekanismascended.common.item.block.transmitter.AscendedItemBlockPressurizedTube;
@@ -42,6 +45,7 @@ import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTETh
 import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTEUniversalCable;
 
 import java.util.function.BiFunction;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class AscendedBlocks {
@@ -77,13 +81,17 @@ public class AscendedBlocks {
                     )
             );
 
-
     public static final BlockRegistryObject<BlockEnergyCube, AscendedItemBlockEnergyCube> ASCENDED_ENERGY_CUBE = BLOCKS.register("ascended_energy_cube", () -> new BlockEnergyCube(AscendedBlockTypes.ASCENDED_ENERGY_CUBE), AscendedItemBlockEnergyCube::new)
-            .forItemHolder(holder -> holder.addAttachmentOnlyContainers(ContainerType.ITEM, () -> ItemSlotsBuilder.builder()
-                    .addEnergy()
-                    .addDrainEnergy()
-                    .build()
+            .forItemHolder(holder -> holder
+                    .addAttachmentOnlyContainers(ContainerType.ITEM, () -> ItemSlotsBuilder.builder()
+                            .addEnergy()
+                            .addDrainEnergy()
+                            .build()
             ));
+
+    public static final BlockRegistryObject<BlockTile<TileEntityInductionCell, BlockTypeTile<TileEntityInductionCell>>, AscendedItemBlockInductionCell> ASCENDED_INDUCTION_CELL = BLOCKS.register("ascended_induction_cell", () -> new BlockTile.BlockTileModel<>(AscendedBlockTypes.ASCENDED_INDUCTION_CELL, properties -> properties.mapColor(MapColor.GOLD)), AscendedItemBlockInductionCell::new);
+    public static final BlockRegistryObject<BlockTile<TileEntityInductionProvider, BlockTypeTile<TileEntityInductionProvider>>, AscendedItemBlockInductionProvider> ASCENDED_INDUCTION_PROVIDER = BLOCKS.register("ascended_induction_provider", () -> new BlockTile.BlockTileModel<>(AscendedBlockTypes.ASCENDED_INDUCTION_PROVIDER, properties -> properties.mapColor(MapColor.GOLD)), AscendedItemBlockInductionProvider::new);
+
 
     private AscendedBlocks() {}
 

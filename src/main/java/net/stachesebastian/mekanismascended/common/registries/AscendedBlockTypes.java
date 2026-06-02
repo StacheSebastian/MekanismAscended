@@ -17,6 +17,8 @@ import mekanism.common.tier.*;
 import mekanism.common.tile.TileEntityChemicalTank;
 import mekanism.common.tile.TileEntityEnergyCube;
 import mekanism.common.tile.TileEntityFluidTank;
+import mekanism.common.tile.multiblock.TileEntityInductionCell;
+import mekanism.common.tile.multiblock.TileEntityInductionProvider;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.stachesebastian.mekanismascended.common.tier.AscendedTierValues;
 import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTELogisticalTransporter;
@@ -108,6 +110,20 @@ public class AscendedBlockTypes {
                     .withSideConfig(TransmissionType.ENERGY, TransmissionType.ITEM)
                     .without(AttributeParticleFX.class, AttributeStateActive.class, AttributeUpgradeSupport.class)
                     .withComputerSupport(EnergyCubeTier.ULTIMATE, "EnergyCube")
+                    .build();
+
+
+    public static final BlockTypeTile<TileEntityInductionCell> ASCENDED_INDUCTION_CELL =
+            BlockTypeTile.BlockTileBuilder.createBlock(() -> AscendedTileEntityTypes.ASCENDED_INDUCTION_CELL, MekanismLang.DESCRIPTION_INDUCTION_CELL)
+                    .withEnergyConfig(() -> AscendedTierValues.ASCENDED_INDUCTION_CELL_CAPACITY)
+                    .with(new AttributeTier<>(InductionCellTier.ULTIMATE))
+                    .internalMultiblock()
+                    .build();
+
+    public static final BlockTypeTile<TileEntityInductionProvider> ASCENDED_INDUCTION_PROVIDER =
+            BlockTypeTile.BlockTileBuilder.createBlock(() -> AscendedTileEntityTypes.ASCENDED_INDUCTION_PROVIDER, MekanismLang.DESCRIPTION_INDUCTION_PROVIDER)
+                    .with(new AttributeTier<>(InductionProviderTier.ULTIMATE))
+                    .internalMultiblock()
                     .build();
 
     private AscendedBlockTypes() {}

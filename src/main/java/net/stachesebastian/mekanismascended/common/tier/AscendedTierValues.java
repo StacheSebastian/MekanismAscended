@@ -37,5 +37,11 @@ public class AscendedTierValues {
     public static long ASCENDED_ENERGY_CUBE_CAPACITY = 16 * 256000000L; //ULTIMATE: 256000000
     public static long ASCENDED_ENERGY_CUBE_OUTPUT = 16 * 256000L; //ULTIMATE: 256000
 
+    //Induction Cell
+    public static long ASCENDED_INDUCTION_CELL_CAPACITY = 16 * 4000000000000L; //ULTIMATE: 4000000000000
+
+    //Induction Provider
+    public static long ASCENDED_INDUCTION_PROVIDER_OUTPUT = 16 * 131072000L; //ULTIMATE: 131072000
+
     public AscendedTierValues() {}
 }

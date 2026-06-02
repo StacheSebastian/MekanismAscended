@@ -92,6 +92,7 @@ sourceSets.main.resources {
 dependencies {
     runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
     runtimeOnly 'curse.maven:storage-drawers-223852:6995432'
+    runtimeOnly 'curse.maven:ctm-267602:5587515'
 
     compileOnly "mekanism:Mekanism:${mekanism_version}:api"
     compileOnly "mekanism:Mekanism:${mekanism_version}"

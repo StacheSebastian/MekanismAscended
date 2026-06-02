@@ -13,6 +13,8 @@ import mekanism.common.tile.base.CapabilityTileEntity;
 import mekanism.common.tile.base.TileEntityMekanism;
 import mekanism.common.tile.TileEntityChemicalTank;
 import mekanism.common.tile.TileEntityFluidTank;
+import mekanism.common.tile.multiblock.TileEntityInductionCell;
+import mekanism.common.tile.multiblock.TileEntityInductionProvider;
 import mekanism.common.tile.transmitter.TileEntityTransmitter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -58,6 +60,9 @@ public class AscendedTileEntityTypes {
                     .serverTicker(TileEntityMekanism::tickServer)
                     .withSimple(Capabilities.CONFIG_CARD)
                     .build();
+
+    public static final TileEntityTypeRegistryObject<TileEntityInductionCell> ASCENDED_INDUCTION_CELL = TILE_ENTITY_TYPES.builder(AscendedBlocks.ASCENDED_INDUCTION_CELL, (pos, state) -> new TileEntityInductionCell(AscendedBlocks.ASCENDED_INDUCTION_CELL, pos, state)).build();
+    public static final TileEntityTypeRegistryObject<TileEntityInductionProvider> ASCENDED_INDUCTION_PROVIDER = TILE_ENTITY_TYPES.builder(AscendedBlocks.ASCENDED_INDUCTION_PROVIDER, (pos, state) -> new TileEntityInductionProvider(AscendedBlocks.ASCENDED_INDUCTION_PROVIDER, pos, state)).build();
 
     private AscendedTileEntityTypes() {}
 
