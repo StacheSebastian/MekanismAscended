@@ -24,7 +24,7 @@ import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsE
 import net.stachesebastian.mekanismascended.MekanismAscended;
 import net.stachesebastian.mekanismascended.common.registries.AscendedBlocks;
 import net.stachesebastian.mekanismascended.common.registries.AscendedTileEntityTypes;
-import net.stachesebastian.mekanismascended.common.tier.transmitter.AscendedTierValues;
+import net.stachesebastian.mekanismascended.common.tier.AscendedTierValues;
 
 @EventBusSubscriber(modid = MekanismAscended.MODID, value = Dist.CLIENT)
 public class AscendedClientRegistration {

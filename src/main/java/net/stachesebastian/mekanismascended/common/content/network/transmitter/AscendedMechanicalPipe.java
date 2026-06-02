@@ -4,7 +4,7 @@ import mekanism.common.content.network.transmitter.MechanicalPipe;
 import mekanism.common.tile.transmitter.TileEntityTransmitter;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.block.Block;
-import net.stachesebastian.mekanismascended.common.tier.transmitter.AscendedTierValues;
+import net.stachesebastian.mekanismascended.common.tier.AscendedTierValues;
 
 public class AscendedMechanicalPipe extends MechanicalPipe implements IMechanicalPipeTierProvider {
     public AscendedMechanicalPipe(Holder<Block> blockProvider, TileEntityTransmitter tile) {

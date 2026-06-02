@@ -14,7 +14,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.neoforged.neoforge.fluids.FluidStack;
-import net.stachesebastian.mekanismascended.common.tier.transmitter.AscendedTierValues;
+import net.stachesebastian.mekanismascended.common.tier.AscendedTierValues;
 import org.jetbrains.annotations.NotNull;
 
 public class AscendedItemBlockFluidTank extends ItemBlockFluidTank {

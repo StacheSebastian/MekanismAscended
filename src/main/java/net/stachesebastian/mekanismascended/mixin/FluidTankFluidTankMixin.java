@@ -4,7 +4,7 @@ import java.util.function.IntSupplier;
 import mekanism.api.IContentsListener;
 import mekanism.common.capabilities.fluid.FluidTankFluidTank;
 import mekanism.common.tile.TileEntityFluidTank;
-import net.stachesebastian.mekanismascended.common.tier.transmitter.AscendedTierValues;
+import net.stachesebastian.mekanismascended.common.tier.AscendedTierValues;
 import net.stachesebastian.mekanismascended.common.tile.AscendedTEFluidTank;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;

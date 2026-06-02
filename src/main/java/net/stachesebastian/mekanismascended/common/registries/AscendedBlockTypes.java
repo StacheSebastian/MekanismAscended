@@ -18,7 +18,7 @@ import mekanism.common.tile.TileEntityChemicalTank;
 import mekanism.common.tile.TileEntityEnergyCube;
 import mekanism.common.tile.TileEntityFluidTank;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.stachesebastian.mekanismascended.common.tier.transmitter.AscendedTierValues;
+import net.stachesebastian.mekanismascended.common.tier.AscendedTierValues;
 import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTELogisticalTransporter;
 import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTEMechanicalPipe;
 import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTEPressurizedTube;

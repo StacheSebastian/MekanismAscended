@@ -13,7 +13,7 @@ import net.minecraft.world.TickRateManager;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.stachesebastian.mekanismascended.common.tier.transmitter.AscendedTierValues;
+import net.stachesebastian.mekanismascended.common.tier.AscendedTierValues;
 import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTELogisticalTransporter;
 import org.jetbrains.annotations.NotNull;
 

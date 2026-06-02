@@ -1,4 +1,4 @@
-package net.stachesebastian.mekanismascended.common.tier.transmitter;
+package net.stachesebastian.mekanismascended.common.tier;
 
 import mekanism.api.heat.HeatAPI;
 import net.neoforged.neoforge.fluids.FluidType;

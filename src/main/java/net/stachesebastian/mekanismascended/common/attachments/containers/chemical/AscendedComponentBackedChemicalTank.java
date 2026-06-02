@@ -4,7 +4,7 @@ import mekanism.api.functions.ConstantPredicates;
 import mekanism.common.attachments.containers.ContainerType;
 import mekanism.common.attachments.containers.chemical.ComponentBackedChemicalTank;
 import net.minecraft.world.item.ItemStack;
-import net.stachesebastian.mekanismascended.common.tier.transmitter.AscendedTierValues;
+import net.stachesebastian.mekanismascended.common.tier.AscendedTierValues;
 
 public class AscendedComponentBackedChemicalTank extends ComponentBackedChemicalTank {
 
