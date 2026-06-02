@@ -1,21 +1,13 @@
 package net.stachesebastian.mekanismascended.common.item.block;
 
 import mekanism.api.text.EnumColor;
-import mekanism.client.key.MekKeyHandler;
-import mekanism.client.key.MekanismKeyHandler;
 import mekanism.common.MekanismLang;
 import mekanism.common.block.prefab.BlockTile;
-import mekanism.common.block.prefab.BlockTile.BlockTileModel;
 import mekanism.common.content.blocktype.BlockTypeTile;
-import mekanism.common.content.blocktype.Machine;
-import mekanism.common.item.block.ItemBlockChemicalTank;
 import mekanism.common.item.block.ItemBlockInductionCell;
-import mekanism.common.tier.InductionCellTier;
-import mekanism.common.tile.TileEntityChemicalTank;
 import mekanism.common.tile.multiblock.TileEntityInductionCell;
 import mekanism.common.util.StorageUtils;
 import mekanism.common.util.text.EnergyDisplay;
-import mekanism.common.util.text.TextUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;

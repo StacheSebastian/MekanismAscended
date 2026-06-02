@@ -19,12 +19,11 @@ public abstract class ThermodynamicConductorMixin {
                 target = "Lmekanism/common/capabilities/heat/VariableHeatCapacitor;create(DLjava/util/function/DoubleSupplier;Ljava/util/function/DoubleSupplier;Ljava/util/function/DoubleSupplier;Lmekanism/api/IContentsListener;)Lmekanism/common/capabilities/heat/VariableHeatCapacitor;"
           )
     )
-    private VariableHeatCapacitor mekanismAscended$createBuffer(double heatCapacity, DoubleSupplier inverseConduction,
-          DoubleSupplier inverseInsulation, DoubleSupplier ambientTemperature, IContentsListener listener) {
+    private VariableHeatCapacitor mekanismAscended$createBuffer(double heatCapacity, DoubleSupplier conductionCoefficient, DoubleSupplier insulationCoefficient, DoubleSupplier ambientTempSupplier, IContentsListener listener) {
         if (this instanceof IThermodynamicConductorTierProvider provider) {
             return VariableHeatCapacitor.create(provider.getHeatCapacity(), provider::getInverseConduction,
-                  provider::getInverseConductionInsulation, ambientTemperature, listener);
+                  provider::getInverseConductionInsulation, ambientTempSupplier, listener);
         }
-        return VariableHeatCapacitor.create(heatCapacity, inverseConduction, inverseInsulation, ambientTemperature, listener);
+        return VariableHeatCapacitor.create(heatCapacity, conductionCoefficient, insulationCoefficient, ambientTempSupplier, listener);
     }
 }

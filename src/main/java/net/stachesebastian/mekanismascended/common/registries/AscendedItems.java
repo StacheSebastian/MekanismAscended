@@ -5,8 +5,6 @@ import mekanism.common.registration.impl.ItemRegistryObject;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.registries.DeferredItem;
-import net.neoforged.neoforge.registries.DeferredRegister;
 import net.stachesebastian.mekanismascended.MekanismAscended;
 import net.stachesebastian.mekanismascended.common.item.AscendedItem;
 import net.stachesebastian.mekanismascended.common.item.AscendedItemAlloy;

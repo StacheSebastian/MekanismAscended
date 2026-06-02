@@ -39,7 +39,6 @@ public class AscendedItemBlockMechanicalPipe extends ItemBlockTooltip<BlockLarge
     @Override
     protected void addStats(@NotNull ItemStack stack, @NotNull Item.TooltipContext context, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
         super.addStats(stack, context, tooltip, flag);
-        PipeTier tier = getTier();
         tooltip.add(MekanismLang.CAPACITY_MB_PER_TICK.translateColored(EnumColor.INDIGO, EnumColor.GRAY, TextUtils.format(AscendedTierValues.ASCENDED_MECHANICAL_PIPE_CAPACITY)));
         tooltip.add(MekanismLang.PUMP_RATE_MB.translateColored(EnumColor.INDIGO, EnumColor.GRAY, TextUtils.format(AscendedTierValues.ASCENDED_MECHANICAL_PIPE_PULL_AMOUNT)));
     }

@@ -1,32 +1,21 @@
 package net.stachesebastian.mekanismascended.common.registries;
 
-import mekanism.api.tier.ITier;
 import mekanism.common.attachments.containers.ContainerType;
 import mekanism.common.attachments.containers.chemical.ChemicalTanksBuilder;
 import mekanism.common.attachments.containers.fluid.FluidTanksBuilder;
 import mekanism.common.attachments.containers.item.ItemSlotsBuilder;
 import mekanism.common.block.BlockEnergyCube;
-import mekanism.common.block.attribute.AttributeTier;
 import mekanism.common.block.basic.BlockFluidTank;
 import mekanism.common.block.prefab.BlockTile;
 import mekanism.common.block.transmitter.BlockLargeTransmitter;
 import mekanism.common.block.transmitter.BlockSmallTransmitter;
-import mekanism.common.content.blocktype.BlockType;
 import mekanism.common.content.blocktype.BlockTypeTile;
 import mekanism.common.content.blocktype.Machine;
-import mekanism.common.item.block.ItemBlockInductionCell;
-import mekanism.common.item.block.ItemBlockInductionProvider;
 import mekanism.common.registration.impl.BlockDeferredRegister;
 import mekanism.common.registration.impl.BlockRegistryObject;
-import mekanism.common.registries.MekanismBlockTypes;
 import mekanism.common.tile.TileEntityChemicalTank;
-import mekanism.common.tile.TileEntityEnergyCube;
-import mekanism.common.tile.TileEntityFluidTank;
 import mekanism.common.tile.multiblock.TileEntityInductionCell;
 import mekanism.common.tile.multiblock.TileEntityInductionProvider;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.stachesebastian.mekanismascended.MekanismAscended;
@@ -43,10 +32,6 @@ import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTEMe
 import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTEPressurizedTube;
 import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTEThermodynamicConductor;
 import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTEUniversalCable;
-
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.Supplier;
 
 public class AscendedBlocks {
     public static final BlockDeferredRegister BLOCKS = new BlockDeferredRegister(MekanismAscended.MODID);
