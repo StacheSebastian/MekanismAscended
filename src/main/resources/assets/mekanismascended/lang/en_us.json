@@ -22,5 +22,10 @@
 
   "container.mekanismascended.ascended_fluid_tank": "Ascended Fluid Tank",
   "container.mekanismascended.ascended_chemical_tank": "Ascended Chemical Tank",
-  "container.mekanismascended.ascended_energy_cube": "Ascended Energy Cube"
+  "container.mekanismascended.ascended_energy_cube": "Ascended Energy Cube",
+
+  "tag.item.c.alloys.ascended": "Ascended Alloys",
+  "tag.item.c.circuits.ascended": "Ascended Circuits",
+  "tag.item.mekanism.alloys.ascended": "Ascended Alloys",
+  "tag.item.mekanism.enriched.nether_star": "Enriched Nether Star"
 }

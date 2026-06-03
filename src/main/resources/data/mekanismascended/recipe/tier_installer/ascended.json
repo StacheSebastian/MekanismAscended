@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "mekanism:alloys/ascended"
+    },
+    "C": {
+      "tag": "c:circuits/ascended"
+    },
+    "I": {
+      "tag": "c:ingots/netherite"
+    },
+    "P": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "ACA",
+    "IPI",
+    "ACA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mekanismascended:ascended_tier_installer"
+  }
+}

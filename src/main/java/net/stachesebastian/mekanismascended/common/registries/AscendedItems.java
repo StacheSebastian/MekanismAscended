@@ -22,12 +22,12 @@ public class AscendedItems {
 
     public static final ItemRegistryObject<AscendedItem> ASCENDED_CONTROL_CIRCUIT = ITEMS.register(
             "ascended_control_circuit",
-            () -> new AscendedItem(new Item.Properties().rarity(Rarity.EPIC))
+            () -> new AscendedItem(new Item.Properties())
     );
 
     public static final ItemRegistryObject<AscendedItemTierInstaller> ASCENDED_TIER_INSTALLER = ITEMS.register(
             "ascended_tier_installer",
-            () -> new AscendedItemTierInstaller(new Item.Properties().rarity(Rarity.EPIC))
+            () -> new AscendedItemTierInstaller(new Item.Properties())
     );
 
     public static final ItemRegistryObject<Item> ENRICHED_NETHER_STAR = ITEMS.register(

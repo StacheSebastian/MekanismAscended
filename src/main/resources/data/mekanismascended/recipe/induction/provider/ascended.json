@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "mekanismascended:ascended_energy_cube"
+    },
+    "C": {
+      "tag": "c:circuits/ascended"
+    },
+    "P": {
+      "item": "mekanism:ultimate_induction_provider"
+    }
+  },
+  "pattern": [
+    "CPC",
+    "P#P",
+    "CPC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mekanismascended:ascended_induction_provider"
+  }
+}

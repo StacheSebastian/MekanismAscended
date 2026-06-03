@@ -1,0 +1,24 @@
+{
+  "type": "mekanism:mek_data",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "mekanismascended:ascended_energy_cube"
+    },
+    "E": {
+      "item": "mekanism:energy_tablet"
+    },
+    "P": {
+      "item": "mekanism:ultimate_induction_cell"
+    }
+  },
+  "pattern": [
+    "EPE",
+    "P#P",
+    "EPE"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mekanismascended:ascended_induction_cell"
+  }
+}
