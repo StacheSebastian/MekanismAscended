@@ -3,8 +3,10 @@ package net.stachesebastian.mekanismascended.common.registries;
 import mekanism.common.attachments.containers.ContainerType;
 import mekanism.common.attachments.containers.chemical.ChemicalTanksBuilder;
 import mekanism.common.attachments.containers.fluid.FluidTanksBuilder;
+import mekanism.common.attachments.containers.item.ComponentBackedBinInventorySlot;
 import mekanism.common.attachments.containers.item.ItemSlotsBuilder;
 import mekanism.common.block.BlockEnergyCube;
+import mekanism.common.block.basic.BlockBin;
 import mekanism.common.block.basic.BlockFluidTank;
 import mekanism.common.block.prefab.BlockTile;
 import mekanism.common.block.transmitter.BlockLargeTransmitter;
@@ -76,6 +78,13 @@ public class AscendedBlocks {
 
     public static final BlockRegistryObject<BlockTile<TileEntityInductionCell, BlockTypeTile<TileEntityInductionCell>>, AscendedItemBlockInductionCell> ASCENDED_INDUCTION_CELL = BLOCKS.register("ascended_induction_cell", () -> new BlockTile.BlockTileModel<>(AscendedBlockTypes.ASCENDED_INDUCTION_CELL, properties -> properties.mapColor(MapColor.GOLD)), AscendedItemBlockInductionCell::new);
     public static final BlockRegistryObject<BlockTile<TileEntityInductionProvider, BlockTypeTile<TileEntityInductionProvider>>, AscendedItemBlockInductionProvider> ASCENDED_INDUCTION_PROVIDER = BLOCKS.register("ascended_induction_provider", () -> new BlockTile.BlockTileModel<>(AscendedBlockTypes.ASCENDED_INDUCTION_PROVIDER, properties -> properties.mapColor(MapColor.GOLD)), AscendedItemBlockInductionProvider::new);
+
+    public static final BlockRegistryObject<BlockBin, AscendedItemBlockBin> ASCENDED_BIN = BLOCKS.register("ascended_bin", () -> new BlockBin(AscendedBlockTypes.ASCENDED_BIN, properties -> properties.mapColor(MapColor.GOLD)), AscendedItemBlockBin::new)
+            .forItemHolder(holder -> holder
+                    .addAttachmentOnlyContainers(ContainerType.ITEM, () -> ItemSlotsBuilder.builder()
+                            .addSlot(ComponentBackedBinInventorySlot::create)
+                            .build()
+            ));
 
 
     private AscendedBlocks() {}

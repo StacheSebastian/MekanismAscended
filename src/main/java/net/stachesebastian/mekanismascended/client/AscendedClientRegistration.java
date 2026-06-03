@@ -5,6 +5,7 @@ import mekanism.client.render.RenderPropertiesProvider.MekRenderProperties;
 import mekanism.client.render.item.TransmitterTypeDecorator;
 import mekanism.client.render.item.block.RenderEnergyCubeItem;
 import mekanism.client.render.item.block.RenderFluidTankItem;
+import mekanism.client.render.tileentity.RenderBin;
 import mekanism.client.render.tileentity.RenderEnergyCube;
 import mekanism.client.render.tileentity.RenderFluidTank;
 import mekanism.client.render.transmitter.RenderLogisticalTransporter;
@@ -40,6 +41,7 @@ public class AscendedClientRegistration {
         ClientRegistrationUtil.bindTileEntityRenderer(event, RenderLogisticalTransporter::new, AscendedTileEntityTypes.ASCENDED_LOGISTICAL_TRANSPORTER);
         ClientRegistrationUtil.bindTileEntityRenderer(event, RenderFluidTank::new, AscendedTileEntityTypes.ASCENDED_FLUID_TANK);
         ClientRegistrationUtil.bindTileEntityRenderer(event, RenderEnergyCube::new, AscendedTileEntityTypes.ASCENDED_ENERGY_CUBE);
+        ClientRegistrationUtil.bindTileEntityRenderer(event, RenderBin::new, AscendedTileEntityTypes.ASCENDED_BIN);
     }
 
     @SubscribeEvent

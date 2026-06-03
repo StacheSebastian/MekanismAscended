@@ -27,6 +27,8 @@ public abstract class AttributeUpgradeableMixin {
                     cir.setReturnValue(BlockStateHelper.copyStateData(current, AscendedBlocks.ASCENDED_CHEMICAL_TANK));
             case Block block when current.is(MekanismBlocks.ULTIMATE_ENERGY_CUBE) ->
                     cir.setReturnValue(BlockStateHelper.copyStateData(current, AscendedBlocks.ASCENDED_ENERGY_CUBE));
+            case Block block when current.is(MekanismBlocks.ULTIMATE_BIN) ->
+                    cir.setReturnValue(BlockStateHelper.copyStateData(current, AscendedBlocks.ASCENDED_BIN));
             default -> {
             }
         }

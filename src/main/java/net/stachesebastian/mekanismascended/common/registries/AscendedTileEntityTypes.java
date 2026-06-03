@@ -7,6 +7,7 @@ import mekanism.common.integration.computer.ComputerCapabilityHelper;
 import mekanism.common.integration.energy.EnergyCompatUtils;
 import mekanism.common.registration.impl.TileEntityTypeDeferredRegister;
 import mekanism.common.registration.impl.TileEntityTypeRegistryObject;
+import mekanism.common.tile.TileEntityBin;
 import mekanism.common.tile.TileEntityEnergyCube;
 import mekanism.common.tile.base.CapabilityTileEntity;
 import mekanism.common.tile.base.TileEntityMekanism;
@@ -22,6 +23,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.stachesebastian.mekanismascended.MekanismAscended;
+import net.stachesebastian.mekanismascended.common.tile.AscendedTEBin;
 import net.stachesebastian.mekanismascended.common.tile.AscendedTEChemicalTank;
 import net.stachesebastian.mekanismascended.common.tile.AscendedTEEnergyCube;
 import net.stachesebastian.mekanismascended.common.tile.AscendedTEFluidTank;
@@ -62,6 +64,12 @@ public class AscendedTileEntityTypes {
 
     public static final TileEntityTypeRegistryObject<TileEntityInductionCell> ASCENDED_INDUCTION_CELL = TILE_ENTITY_TYPES.builder(AscendedBlocks.ASCENDED_INDUCTION_CELL, (pos, state) -> new TileEntityInductionCell(AscendedBlocks.ASCENDED_INDUCTION_CELL, pos, state)).build();
     public static final TileEntityTypeRegistryObject<TileEntityInductionProvider> ASCENDED_INDUCTION_PROVIDER = TILE_ENTITY_TYPES.builder(AscendedBlocks.ASCENDED_INDUCTION_PROVIDER, (pos, state) -> new TileEntityInductionProvider(AscendedBlocks.ASCENDED_INDUCTION_PROVIDER, pos, state)).build();
+
+    public static final TileEntityTypeRegistryObject<TileEntityBin> ASCENDED_BIN =
+            TILE_ENTITY_TYPES.<TileEntityBin>mekBuilder(AscendedBlocks.ASCENDED_BIN, (pos, state) -> new AscendedTEBin(AscendedBlocks.ASCENDED_BIN, pos, state))
+                    .serverTicker(TileEntityMekanism::tickServer)
+                    .withSimple(Capabilities.CONFIGURABLE)
+                    .build();
 
     private AscendedTileEntityTypes() {}
 

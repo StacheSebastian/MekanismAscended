@@ -43,5 +43,8 @@ public class AscendedTierValues {
     //Induction Provider
     public static long ASCENDED_INDUCTION_PROVIDER_OUTPUT = 16 * 131072000L; //ULTIMATE: 131072000
 
+    //Bin
+    public static int ASCENDED_BIN_CAPACITY = 16 * 262144; //ULTIMATE: 262144
+
     public AscendedTierValues() {}
 }

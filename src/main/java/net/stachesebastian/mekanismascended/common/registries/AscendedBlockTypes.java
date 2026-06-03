@@ -1,11 +1,7 @@
 package net.stachesebastian.mekanismascended.common.registries;
 
 import mekanism.common.MekanismLang;
-import mekanism.common.block.attribute.AttributeParticleFX;
-import mekanism.common.block.attribute.AttributeStateActive;
-import mekanism.common.block.attribute.AttributeStateFacing;
-import mekanism.common.block.attribute.AttributeUpgradeSupport;
-import mekanism.common.block.attribute.AttributeTier;
+import mekanism.common.block.attribute.*;
 import mekanism.common.block.attribute.Attributes.AttributeRedstone;
 import mekanism.common.content.blocktype.BlockShapes;
 import mekanism.common.content.blocktype.BlockTypeTile;
@@ -14,6 +10,7 @@ import mekanism.common.content.blocktype.Machine.MachineBuilder;
 import mekanism.common.lib.transmitter.TransmissionType;
 import mekanism.common.registries.MekanismContainerTypes;
 import mekanism.common.tier.*;
+import mekanism.common.tile.TileEntityBin;
 import mekanism.common.tile.TileEntityChemicalTank;
 import mekanism.common.tile.TileEntityEnergyCube;
 import mekanism.common.tile.TileEntityFluidTank;
@@ -84,7 +81,7 @@ public class AscendedBlockTypes {
                     .withCustomShape(BlockShapes.FLUID_TANK)
                     .with(new AttributeTier<>(FluidTankTier.ULTIMATE))
                     .without(AttributeParticleFX.class, AttributeStateFacing.class, AttributeRedstone.class, AttributeUpgradeSupport.class)
-                    .withComputerSupport(FluidTankTier.ULTIMATE, "FluidTank")
+                    .withComputerSupport("AscendedFluidTank")
                     .build();
 
     public static final Machine<TileEntityChemicalTank> ASCENDED_CHEMICAL_TANK =
@@ -97,7 +94,7 @@ public class AscendedBlockTypes {
                     .with(new AttributeTier<>(ChemicalTankTier.ULTIMATE))
                     .withSideConfig(TransmissionType.CHEMICAL, TransmissionType.ITEM)
                     .without(AttributeParticleFX.class, AttributeStateActive.class, AttributeUpgradeSupport.class)
-                    .withComputerSupport(ChemicalTankTier.ULTIMATE, "ChemicalTank")
+                    .withComputerSupport("AscendedChemicalTank")
                     .build();
 
     public static final Machine<TileEntityEnergyCube> ASCENDED_ENERGY_CUBE =
@@ -109,7 +106,7 @@ public class AscendedBlockTypes {
                     .with(new AttributeTier<>(EnergyCubeTier.ULTIMATE), new AttributeStateFacing(BlockStateProperties.FACING))
                     .withSideConfig(TransmissionType.ENERGY, TransmissionType.ITEM)
                     .without(AttributeParticleFX.class, AttributeStateActive.class, AttributeUpgradeSupport.class)
-                    .withComputerSupport(EnergyCubeTier.ULTIMATE, "EnergyCube")
+                    .withComputerSupport("AscendedEnergyCube")
                     .build();
 
 
@@ -124,6 +121,16 @@ public class AscendedBlockTypes {
             BlockTypeTile.BlockTileBuilder.createBlock(() -> AscendedTileEntityTypes.ASCENDED_INDUCTION_PROVIDER, MekanismLang.DESCRIPTION_INDUCTION_PROVIDER)
                     .with(new AttributeTier<>(InductionProviderTier.ULTIMATE))
                     .internalMultiblock()
+                    .build();
+
+    public static final Machine<TileEntityBin> ASCENDED_BIN =
+            MachineBuilder.createMachine(
+                            () -> AscendedTileEntityTypes.ASCENDED_BIN,
+                            MekanismLang.DESCRIPTION_BIN
+                    )
+                    .with(new AttributeTier<>(BinTier.ULTIMATE))
+                    .without(AttributeParticleFX.class, Attributes.AttributeSecurity.class, AttributeUpgradeSupport.class, AttributeRedstone.class)
+                    .withComputerSupport("AscendedBin")
                     .build();
 
     private AscendedBlockTypes() {}
