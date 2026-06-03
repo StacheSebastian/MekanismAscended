@@ -3,8 +3,12 @@ package net.stachesebastian.mekanismascended.common.registries;
 import mekanism.common.MekanismLang;
 import mekanism.common.block.attribute.*;
 import mekanism.common.block.attribute.Attributes.AttributeRedstone;
+import mekanism.api.math.MathUtils;
 import mekanism.common.content.blocktype.BlockShapes;
 import mekanism.common.content.blocktype.BlockTypeTile;
+import mekanism.common.content.blocktype.Factory;
+import mekanism.common.content.blocktype.Factory.FactoryBuilder;
+import mekanism.common.content.blocktype.FactoryType;
 import mekanism.common.content.blocktype.Machine;
 import mekanism.common.content.blocktype.Machine.MachineBuilder;
 import mekanism.common.lib.transmitter.TransmissionType;
@@ -16,6 +20,7 @@ import mekanism.common.tile.TileEntityEnergyCube;
 import mekanism.common.tile.TileEntityFluidTank;
 import mekanism.common.tile.multiblock.TileEntityInductionCell;
 import mekanism.common.tile.multiblock.TileEntityInductionProvider;
+import mekanism.common.tile.factory.TileEntityFactory;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.stachesebastian.mekanismascended.common.tier.AscendedTierValues;
 import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTELogisticalTransporter;
@@ -23,6 +28,10 @@ import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTEMe
 import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTEPressurizedTube;
 import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTEThermodynamicConductor;
 import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTEUniversalCable;
+import net.stachesebastian.mekanismascended.common.tile.factory.AscendedTECombiningFactory;
+import net.stachesebastian.mekanismascended.common.tile.factory.AscendedTEItemStackChemicalToItemStackFactory;
+import net.stachesebastian.mekanismascended.common.tile.factory.AscendedTEItemStackToItemStackFactory;
+import net.stachesebastian.mekanismascended.common.tile.factory.AscendedTESawingFactory;
 
 public class AscendedBlockTypes {
 
@@ -132,6 +141,36 @@ public class AscendedBlockTypes {
                     .without(AttributeParticleFX.class, Attributes.AttributeSecurity.class, AttributeUpgradeSupport.class, AttributeRedstone.class)
                     .withComputerSupport("AscendedBin")
                     .build();
+
+    public static final Factory<AscendedTEItemStackToItemStackFactory> ASCENDED_SMELTING_FACTORY =
+            createAscendedFactory(() -> AscendedTileEntityTypes.ASCENDED_SMELTING_FACTORY, FactoryType.SMELTING);
+    public static final Factory<AscendedTEItemStackToItemStackFactory> ASCENDED_ENRICHING_FACTORY =
+            createAscendedFactory(() -> AscendedTileEntityTypes.ASCENDED_ENRICHING_FACTORY, FactoryType.ENRICHING);
+    public static final Factory<AscendedTEItemStackToItemStackFactory> ASCENDED_CRUSHING_FACTORY =
+            createAscendedFactory(() -> AscendedTileEntityTypes.ASCENDED_CRUSHING_FACTORY, FactoryType.CRUSHING);
+    public static final Factory<AscendedTEItemStackChemicalToItemStackFactory> ASCENDED_COMPRESSING_FACTORY =
+            createAscendedFactory(() -> AscendedTileEntityTypes.ASCENDED_COMPRESSING_FACTORY, FactoryType.COMPRESSING);
+    public static final Factory<AscendedTECombiningFactory> ASCENDED_COMBINING_FACTORY =
+            createAscendedFactory(() -> AscendedTileEntityTypes.ASCENDED_COMBINING_FACTORY, FactoryType.COMBINING);
+    public static final Factory<AscendedTEItemStackChemicalToItemStackFactory> ASCENDED_PURIFYING_FACTORY =
+            createAscendedFactory(() -> AscendedTileEntityTypes.ASCENDED_PURIFYING_FACTORY, FactoryType.PURIFYING);
+    public static final Factory<AscendedTEItemStackChemicalToItemStackFactory> ASCENDED_INJECTING_FACTORY =
+            createAscendedFactory(() -> AscendedTileEntityTypes.ASCENDED_INJECTING_FACTORY, FactoryType.INJECTING);
+    public static final Factory<AscendedTEItemStackChemicalToItemStackFactory> ASCENDED_INFUSING_FACTORY =
+            createAscendedFactory(() -> AscendedTileEntityTypes.ASCENDED_INFUSING_FACTORY, FactoryType.INFUSING);
+    public static final Factory<AscendedTESawingFactory> ASCENDED_SAWING_FACTORY =
+            createAscendedFactory(() -> AscendedTileEntityTypes.ASCENDED_SAWING_FACTORY, FactoryType.SAWING);
+
+    private static <TILE extends TileEntityFactory<?>> Factory<TILE> createAscendedFactory(java.util.function.Supplier<?> tileEntityRegistrar, FactoryType type) {
+        Factory<TILE> factory = FactoryBuilder.<TILE>createFactory(tileEntityRegistrar, type, FactoryTier.ULTIMATE).build();
+        factory.remove(AttributeUpgradeable.class);
+        AttributeEnergy originalEnergy = type.getBaseMachine().get(AttributeEnergy.class);
+        factory.add(new AttributeEnergy(
+              originalEnergy::getUsage,
+              () -> MathUtils.clampToLong(Math.max(originalEnergy.getConfigStorage() * 0.5, originalEnergy.getUsage()) * AscendedTierValues.ASCENDED_FACTORY_PROCESSES)
+        ));
+        return factory;
+    }
 
     private AscendedBlockTypes() {}
 

@@ -1,15 +1,24 @@
 {
-  "values": [
-    "mekanismascended:ascended_universal_cable",
-    "mekanismascended:ascended_pressurized_tube",
-    "mekanismascended:ascended_thermodynamic_conductor",
-    "mekanismascended:ascended_mechanical_pipe",
-    "mekanismascended:ascended_logistical_transporter",
-    "mekanismascended:ascended_fluid_tank",
-    "mekanismascended:ascended_chemical_tank",
-    "mekanismascended:ascended_energy_cube",
-    "mekanismascended:ascended_induction_cell",
-    "mekanismascended:ascended_induction_provider",
-    "mekanismascended:ascended_bin"
-  ]
+    "values":  [
+                   "mekanismascended:ascended_universal_cable",
+                   "mekanismascended:ascended_pressurized_tube",
+                   "mekanismascended:ascended_thermodynamic_conductor",
+                   "mekanismascended:ascended_mechanical_pipe",
+                   "mekanismascended:ascended_logistical_transporter",
+                   "mekanismascended:ascended_fluid_tank",
+                   "mekanismascended:ascended_chemical_tank",
+                   "mekanismascended:ascended_energy_cube",
+                   "mekanismascended:ascended_induction_cell",
+                   "mekanismascended:ascended_induction_provider",
+                   "mekanismascended:ascended_bin",
+                   "mekanismascended:ascended_smelting_factory",
+                   "mekanismascended:ascended_enriching_factory",
+                   "mekanismascended:ascended_crushing_factory",
+                   "mekanismascended:ascended_compressing_factory",
+                   "mekanismascended:ascended_combining_factory",
+                   "mekanismascended:ascended_purifying_factory",
+                   "mekanismascended:ascended_injecting_factory",
+                   "mekanismascended:ascended_infusing_factory",
+                   "mekanismascended:ascended_sawing_factory"
+               ]
 }

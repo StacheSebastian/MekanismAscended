@@ -7,9 +7,7 @@ import mekanism.common.content.blocktype.BlockTypeTile;
 import mekanism.common.item.block.ItemBlockInductionProvider;
 import mekanism.common.tile.multiblock.TileEntityInductionProvider;
 import mekanism.common.util.text.EnergyDisplay;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -26,12 +24,12 @@ public class AscendedItemBlockInductionProvider extends ItemBlockInductionProvid
 
     @Override
     protected void addStats(@NotNull ItemStack stack, @NotNull Item.TooltipContext context, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
-        tooltip.add(MekanismLang.INDUCTION_PORT_OUTPUT_RATE.translateColored(TextColor.fromLegacyFormat(ChatFormatting.GOLD), EnumColor.GRAY, EnergyDisplay.of(AscendedTierValues.ASCENDED_INDUCTION_PROVIDER_OUTPUT)));
+        tooltip.add(MekanismLang.INDUCTION_PORT_OUTPUT_RATE.translateColored(AscendedTierValues.ASCENDED_TEXT_COLOR, EnumColor.GRAY, EnergyDisplay.of(AscendedTierValues.ASCENDED_INDUCTION_PROVIDER_OUTPUT)));
     }
 
     @NotNull
     @Override
     public Component getName(@NotNull ItemStack stack) {
-        return super.getName(stack).copy().withStyle(ChatFormatting.GOLD);
+        return super.getName(stack).copy().withStyle(style -> style.withColor(AscendedTierValues.ASCENDED_TEXT_COLOR));
     }
 }

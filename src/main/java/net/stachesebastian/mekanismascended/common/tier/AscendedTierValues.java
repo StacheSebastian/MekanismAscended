@@ -1,9 +1,12 @@
 package net.stachesebastian.mekanismascended.common.tier;
 
 import mekanism.api.heat.HeatAPI;
+import net.minecraft.network.chat.TextColor;
 import net.neoforged.neoforge.fluids.FluidType;
 
 public class AscendedTierValues {
+
+    public static final TextColor ASCENDED_TEXT_COLOR = TextColor.fromRgb(0xFAD64A);
 
     //Universal Cable
     public static long ASCENDED_UNIVERSAL_CABLE_CAPACITY = 16 * 8192000L; //ULTIMATE: 8192000L
@@ -45,6 +48,10 @@ public class AscendedTierValues {
 
     //Bin
     public static int ASCENDED_BIN_CAPACITY = 16 * 262144; //ULTIMATE: 262144
+
+    //Factories
+    public static int ASCENDED_FACTORY_PROCESSES = 15; //ULTIMATE: 9
+
 
     public AscendedTierValues() {}
 }

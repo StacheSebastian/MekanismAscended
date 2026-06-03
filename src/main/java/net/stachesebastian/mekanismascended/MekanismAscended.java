@@ -3,7 +3,6 @@ package net.stachesebastian.mekanismascended;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.config.ModConfig;
 import net.stachesebastian.mekanismascended.common.registries.AscendedBlocks;
 import net.stachesebastian.mekanismascended.common.registries.AscendedChemicals;
 import net.stachesebastian.mekanismascended.common.registries.AscendedCreativeTabs;
@@ -20,7 +19,5 @@ public class MekanismAscended {
         AscendedChemicals.register(modEventBus);
         AscendedTileEntityTypes.register(modEventBus);
         AscendedCreativeTabs.register(modEventBus);
-
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 }

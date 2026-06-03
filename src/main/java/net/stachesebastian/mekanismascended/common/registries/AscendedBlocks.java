@@ -8,16 +8,25 @@ import mekanism.common.attachments.containers.item.ItemSlotsBuilder;
 import mekanism.common.block.BlockEnergyCube;
 import mekanism.common.block.basic.BlockBin;
 import mekanism.common.block.basic.BlockFluidTank;
+import mekanism.common.block.prefab.BlockFactoryMachine.BlockFactory;
 import mekanism.common.block.prefab.BlockTile;
 import mekanism.common.block.transmitter.BlockLargeTransmitter;
 import mekanism.common.block.transmitter.BlockSmallTransmitter;
 import mekanism.common.content.blocktype.BlockTypeTile;
+import mekanism.common.content.blocktype.Factory;
 import mekanism.common.content.blocktype.Machine;
+import mekanism.common.recipe.MekanismRecipeType;
+import mekanism.common.recipe.lookup.cache.InputRecipeCache.DoubleItem;
+import mekanism.common.recipe.lookup.cache.InputRecipeCache.ItemChemical;
 import mekanism.common.registration.impl.BlockDeferredRegister;
 import mekanism.common.registration.impl.BlockRegistryObject;
 import mekanism.common.tile.TileEntityChemicalTank;
+import mekanism.common.tile.factory.TileEntityFactory;
+import mekanism.common.tile.machine.TileEntityMetallurgicInfuser;
+import mekanism.common.tile.prefab.TileEntityAdvancedElectricMachine;
 import mekanism.common.tile.multiblock.TileEntityInductionCell;
 import mekanism.common.tile.multiblock.TileEntityInductionProvider;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.stachesebastian.mekanismascended.MekanismAscended;
@@ -29,11 +38,14 @@ import net.stachesebastian.mekanismascended.common.item.block.transmitter.Ascend
 import net.stachesebastian.mekanismascended.common.item.block.transmitter.AscendedItemBlockPressurizedTube;
 import net.stachesebastian.mekanismascended.common.item.block.transmitter.AscendedItemBlockThermodynamicConductor;
 import net.stachesebastian.mekanismascended.common.item.block.transmitter.AscendedItemBlockUniversalCable;
+import net.stachesebastian.mekanismascended.common.tier.AscendedTierValues;
 import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTELogisticalTransporter;
 import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTEMechanicalPipe;
 import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTEPressurizedTube;
 import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTEThermodynamicConductor;
 import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTEUniversalCable;
+
+import java.util.function.Predicate;
 
 public class AscendedBlocks {
     public static final BlockDeferredRegister BLOCKS = new BlockDeferredRegister(MekanismAscended.MODID);
@@ -86,10 +98,81 @@ public class AscendedBlocks {
                             .build()
             ));
 
+    public static final BlockRegistryObject<BlockFactory<?>, AscendedItemBlockFactory> ASCENDED_SMELTING_FACTORY = registerAscendedFactory("ascended_smelting_factory", AscendedBlockTypes.ASCENDED_SMELTING_FACTORY);
+    public static final BlockRegistryObject<BlockFactory<?>, AscendedItemBlockFactory> ASCENDED_ENRICHING_FACTORY = registerAscendedFactory("ascended_enriching_factory", AscendedBlockTypes.ASCENDED_ENRICHING_FACTORY);
+    public static final BlockRegistryObject<BlockFactory<?>, AscendedItemBlockFactory> ASCENDED_CRUSHING_FACTORY = registerAscendedFactory("ascended_crushing_factory", AscendedBlockTypes.ASCENDED_CRUSHING_FACTORY);
+    public static final BlockRegistryObject<BlockFactory<?>, AscendedItemBlockFactory> ASCENDED_COMPRESSING_FACTORY = registerAscendedFactory("ascended_compressing_factory", AscendedBlockTypes.ASCENDED_COMPRESSING_FACTORY);
+    public static final BlockRegistryObject<BlockFactory<?>, AscendedItemBlockFactory> ASCENDED_COMBINING_FACTORY = registerAscendedFactory("ascended_combining_factory", AscendedBlockTypes.ASCENDED_COMBINING_FACTORY);
+    public static final BlockRegistryObject<BlockFactory<?>, AscendedItemBlockFactory> ASCENDED_PURIFYING_FACTORY = registerAscendedFactory("ascended_purifying_factory", AscendedBlockTypes.ASCENDED_PURIFYING_FACTORY);
+    public static final BlockRegistryObject<BlockFactory<?>, AscendedItemBlockFactory> ASCENDED_INJECTING_FACTORY = registerAscendedFactory("ascended_injecting_factory", AscendedBlockTypes.ASCENDED_INJECTING_FACTORY);
+    public static final BlockRegistryObject<BlockFactory<?>, AscendedItemBlockFactory> ASCENDED_INFUSING_FACTORY = registerAscendedFactory("ascended_infusing_factory", AscendedBlockTypes.ASCENDED_INFUSING_FACTORY);
+    public static final BlockRegistryObject<BlockFactory<?>, AscendedItemBlockFactory> ASCENDED_SAWING_FACTORY = registerAscendedFactory("ascended_sawing_factory", AscendedBlockTypes.ASCENDED_SAWING_FACTORY);
 
     private AscendedBlocks() {}
 
     public static void register(IEventBus modEventBus) {
         BLOCKS.register(modEventBus);
+    }
+
+    private static <TILE extends TileEntityFactory<?>> BlockRegistryObject<BlockFactory<?>, AscendedItemBlockFactory> registerAscendedFactory(String name, Factory<TILE> type) {
+        BlockRegistryObject<BlockFactory<?>, AscendedItemBlockFactory> factory = BLOCKS.register(name, () -> new BlockFactory<>(type), AscendedItemBlockFactory::new);
+        factory.forItemHolder(holder -> {
+            int processes = AscendedTierValues.ASCENDED_FACTORY_PROCESSES;
+            Predicate<ItemStack> recipeInputPredicate = switch (type.getFactoryType()) {
+                case SMELTING -> stack -> MekanismRecipeType.SMELTING.getInputCache().containsInput(null, stack);
+                case ENRICHING -> stack -> MekanismRecipeType.ENRICHING.getInputCache().containsInput(null, stack);
+                case CRUSHING -> stack -> MekanismRecipeType.CRUSHING.getInputCache().containsInput(null, stack);
+                case COMPRESSING -> stack -> MekanismRecipeType.COMPRESSING.getInputCache().containsInputA(null, stack);
+                case COMBINING -> stack -> MekanismRecipeType.COMBINING.getInputCache().containsInputA(null, stack);
+                case PURIFYING -> stack -> MekanismRecipeType.PURIFYING.getInputCache().containsInputA(null, stack);
+                case INJECTING -> stack -> MekanismRecipeType.INJECTING.getInputCache().containsInputA(null, stack);
+                case INFUSING -> stack -> MekanismRecipeType.METALLURGIC_INFUSING.getInputCache().containsInputA(null, stack);
+                case SAWING -> stack -> MekanismRecipeType.SAWING.getInputCache().containsInput(null, stack);
+            };
+            switch (type.getFactoryType()) {
+                case SMELTING, ENRICHING, CRUSHING -> holder.addAttachmentOnlyContainers(ContainerType.ITEM, () -> ItemSlotsBuilder.builder()
+                        .addBasicFactorySlots(processes, recipeInputPredicate)
+                        .addEnergy()
+                        .build()
+                );
+                case COMPRESSING, INJECTING, PURIFYING -> holder
+                        .addAttachmentOnlyContainers(ContainerType.CHEMICAL, () -> ChemicalTanksBuilder.builder()
+                                .addBasic(TileEntityAdvancedElectricMachine.MAX_GAS * processes, switch (type.getFactoryType()) {
+                                    case COMPRESSING -> MekanismRecipeType.COMPRESSING;
+                                    case INJECTING -> MekanismRecipeType.INJECTING;
+                                    case PURIFYING -> MekanismRecipeType.PURIFYING;
+                                    default -> throw new IllegalStateException("Factory type doesn't have a known chemical recipe");
+                                }, ItemChemical::containsInputB)
+                                .build()
+                        ).addAttachmentOnlyContainers(ContainerType.ITEM, () -> ItemSlotsBuilder.builder()
+                                .addBasicFactorySlots(processes, recipeInputPredicate)
+                                .addChemicalFillOrConvertSlot(0)
+                                .addEnergy()
+                                .build()
+                        );
+                case COMBINING -> holder.addAttachmentOnlyContainers(ContainerType.ITEM, () -> ItemSlotsBuilder.builder()
+                        .addBasicFactorySlots(processes, recipeInputPredicate)
+                        .addInput(MekanismRecipeType.COMBINING, DoubleItem::containsInputB)
+                        .addEnergy()
+                        .build()
+                );
+                case INFUSING -> holder
+                        .addAttachmentOnlyContainers(ContainerType.CHEMICAL, () -> ChemicalTanksBuilder.builder()
+                                .addBasic(TileEntityMetallurgicInfuser.MAX_INFUSE * processes, MekanismRecipeType.METALLURGIC_INFUSING, ItemChemical::containsInputB)
+                                .build()
+                        ).addAttachmentOnlyContainers(ContainerType.ITEM, () -> ItemSlotsBuilder.builder()
+                                .addBasicFactorySlots(processes, recipeInputPredicate)
+                                .addInfusionFillOrConvertSlot(0)
+                                .addEnergy()
+                                .build()
+                        );
+                case SAWING -> holder.addAttachmentOnlyContainers(ContainerType.ITEM, () -> ItemSlotsBuilder.builder()
+                        .addBasicFactorySlots(processes, recipeInputPredicate, true)
+                        .addEnergy()
+                        .build()
+                );
+            }
+        });
+        return factory;
     }
 }

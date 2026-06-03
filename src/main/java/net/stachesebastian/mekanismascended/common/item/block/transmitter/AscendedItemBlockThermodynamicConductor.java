@@ -5,7 +5,6 @@ import mekanism.common.MekanismLang;
 import mekanism.common.block.transmitter.BlockSmallTransmitter;
 import mekanism.common.item.block.ItemBlockTooltip;
 import mekanism.common.tier.ConductorTier;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -46,6 +45,6 @@ public class AscendedItemBlockThermodynamicConductor extends ItemBlockTooltip<Bl
     @NotNull
     @Override
     public Component getName(@NotNull ItemStack stack) {
-        return super.getName(stack).copy().withStyle(ChatFormatting.GOLD);
+        return super.getName(stack).copy().withStyle(style -> style.withColor(AscendedTierValues.ASCENDED_TEXT_COLOR));
     }
 }

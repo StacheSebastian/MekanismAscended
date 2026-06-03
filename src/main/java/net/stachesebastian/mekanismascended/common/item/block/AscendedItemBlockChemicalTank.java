@@ -12,7 +12,6 @@ import mekanism.common.util.StorageUtils;
 import mekanism.common.util.text.TextUtils;
 import java.util.List;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -43,6 +42,6 @@ public class AscendedItemBlockChemicalTank extends ItemBlockChemicalTank {
     @NotNull
     @Override
     public Component getName(@NotNull ItemStack stack) {
-        return super.getName(stack).copy().withStyle(ChatFormatting.GOLD);
+        return super.getName(stack).copy().withStyle(style -> style.withColor(AscendedTierValues.ASCENDED_TEXT_COLOR));
     }
 }

@@ -8,9 +8,7 @@ import mekanism.common.item.block.ItemBlockInductionCell;
 import mekanism.common.tile.multiblock.TileEntityInductionCell;
 import mekanism.common.util.StorageUtils;
 import mekanism.common.util.text.EnergyDisplay;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -27,13 +25,13 @@ public class AscendedItemBlockInductionCell extends ItemBlockInductionCell {
 
     @Override
     protected void addStats(@NotNull ItemStack stack, @NotNull Item.TooltipContext context, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
-        tooltip.add(MekanismLang.CAPACITY.translateColored(TextColor.fromLegacyFormat(ChatFormatting.GOLD), EnumColor.GRAY, EnergyDisplay.of(AscendedTierValues.ASCENDED_INDUCTION_CELL_CAPACITY)));
+        tooltip.add(MekanismLang.CAPACITY.translateColored(AscendedTierValues.ASCENDED_TEXT_COLOR, EnumColor.GRAY, EnergyDisplay.of(AscendedTierValues.ASCENDED_INDUCTION_CELL_CAPACITY)));
         StorageUtils.addStoredEnergy(stack, tooltip, false);
     }
 
     @NotNull
     @Override
     public Component getName(@NotNull ItemStack stack) {
-        return super.getName(stack).copy().withStyle(ChatFormatting.GOLD);
+        return super.getName(stack).copy().withStyle(style -> style.withColor(AscendedTierValues.ASCENDED_TEXT_COLOR));
     }
 }

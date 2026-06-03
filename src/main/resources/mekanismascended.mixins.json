@@ -11,6 +11,7 @@
     "ComponentBackedBinInventorySlotMixin",
     "CursedTransporterItemHandlerMixin",
     "EnergyCubeEnergyContainerAccessor",
+    "FactoryContainerMixin",
     "FluidTankFluidTankMixin",
     "LogisticalTransporterBaseMixin",
     "MatrixEnergyContainerMixin",
@@ -23,11 +24,16 @@
     "TileEntityChemicalTankMixin",
     "TileEntityEnergyCubeAccessor",
     "TileEntityEnergyCubeMixin",
+    "TileEntityFactoryMixin",
     "TileEntityFluidTankMixin",
+    "TileEntityItemStackChemicalToItemStackFactoryMixin",
+    "TileEntityItemToItemFactoryMixin",
+    "TileEntitySawingFactoryMixin",
     "TileEntityTransmitterUpgradeMixin"
   ],
   "client": [
-    "GuiChemicalTankMixin"
+    "GuiChemicalTankMixin",
+    "GuiFactoryMixin"
   ],
   "injectors": {
     "defaultRequire": 1

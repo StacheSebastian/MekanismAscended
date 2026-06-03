@@ -15,10 +15,12 @@ import mekanism.common.tile.TileEntityChemicalTank;
 import mekanism.common.tile.TileEntityFluidTank;
 import mekanism.common.tile.multiblock.TileEntityInductionCell;
 import mekanism.common.tile.multiblock.TileEntityInductionProvider;
+import mekanism.common.tile.factory.TileEntityFactory;
 import mekanism.common.tile.transmitter.TileEntityTransmitter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -27,6 +29,10 @@ import net.stachesebastian.mekanismascended.common.tile.AscendedTEBin;
 import net.stachesebastian.mekanismascended.common.tile.AscendedTEChemicalTank;
 import net.stachesebastian.mekanismascended.common.tile.AscendedTEEnergyCube;
 import net.stachesebastian.mekanismascended.common.tile.AscendedTEFluidTank;
+import net.stachesebastian.mekanismascended.common.tile.factory.AscendedTECombiningFactory;
+import net.stachesebastian.mekanismascended.common.tile.factory.AscendedTEItemStackChemicalToItemStackFactory;
+import net.stachesebastian.mekanismascended.common.tile.factory.AscendedTEItemStackToItemStackFactory;
+import net.stachesebastian.mekanismascended.common.tile.factory.AscendedTESawingFactory;
 import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTELogisticalTransporter;
 import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTEMechanicalPipe;
 import net.stachesebastian.mekanismascended.common.tile.transmitter.AscendedTEPressurizedTube;
@@ -70,6 +76,25 @@ public class AscendedTileEntityTypes {
                     .serverTicker(TileEntityMekanism::tickServer)
                     .withSimple(Capabilities.CONFIGURABLE)
                     .build();
+
+    public static final TileEntityTypeRegistryObject<AscendedTEItemStackToItemStackFactory> ASCENDED_SMELTING_FACTORY =
+            registerFactory(AscendedBlocks.ASCENDED_SMELTING_FACTORY, AscendedTEItemStackToItemStackFactory::new);
+    public static final TileEntityTypeRegistryObject<AscendedTEItemStackToItemStackFactory> ASCENDED_ENRICHING_FACTORY =
+            registerFactory(AscendedBlocks.ASCENDED_ENRICHING_FACTORY, AscendedTEItemStackToItemStackFactory::new);
+    public static final TileEntityTypeRegistryObject<AscendedTEItemStackToItemStackFactory> ASCENDED_CRUSHING_FACTORY =
+            registerFactory(AscendedBlocks.ASCENDED_CRUSHING_FACTORY, AscendedTEItemStackToItemStackFactory::new);
+    public static final TileEntityTypeRegistryObject<AscendedTEItemStackChemicalToItemStackFactory> ASCENDED_COMPRESSING_FACTORY =
+            registerFactory(AscendedBlocks.ASCENDED_COMPRESSING_FACTORY, AscendedTEItemStackChemicalToItemStackFactory::new);
+    public static final TileEntityTypeRegistryObject<AscendedTECombiningFactory> ASCENDED_COMBINING_FACTORY =
+            registerFactory(AscendedBlocks.ASCENDED_COMBINING_FACTORY, AscendedTECombiningFactory::new);
+    public static final TileEntityTypeRegistryObject<AscendedTEItemStackChemicalToItemStackFactory> ASCENDED_PURIFYING_FACTORY =
+            registerFactory(AscendedBlocks.ASCENDED_PURIFYING_FACTORY, AscendedTEItemStackChemicalToItemStackFactory::new);
+    public static final TileEntityTypeRegistryObject<AscendedTEItemStackChemicalToItemStackFactory> ASCENDED_INJECTING_FACTORY =
+            registerFactory(AscendedBlocks.ASCENDED_INJECTING_FACTORY, AscendedTEItemStackChemicalToItemStackFactory::new);
+    public static final TileEntityTypeRegistryObject<AscendedTEItemStackChemicalToItemStackFactory> ASCENDED_INFUSING_FACTORY =
+            registerFactory(AscendedBlocks.ASCENDED_INFUSING_FACTORY, AscendedTEItemStackChemicalToItemStackFactory::new);
+    public static final TileEntityTypeRegistryObject<AscendedTESawingFactory> ASCENDED_SAWING_FACTORY =
+            registerFactory(AscendedBlocks.ASCENDED_SAWING_FACTORY, AscendedTESawingFactory::new);
 
     private AscendedTileEntityTypes() {}
 
@@ -124,8 +149,16 @@ public class AscendedTileEntityTypes {
                 .with(Capabilities.CONFIGURABLE, TileEntityTransmitter.CONFIGURABLE_PROVIDER);
     }
 
+    private static <BE extends TileEntityFactory<?>> TileEntityTypeRegistryObject<BE> registerFactory(DeferredHolder<Block, ?> block, BlockEntityFactory<BE> factory) {
+        return TILE_ENTITY_TYPES.mekBuilder(block, (pos, state) -> factory.create(block, pos, state))
+                .clientTicker(TileEntityMekanism::tickClient)
+                .serverTicker(TileEntityMekanism::tickServer)
+                .withSimple(Capabilities.CONFIG_CARD)
+                .build();
+    }
+
     @FunctionalInterface
-    private interface BlockEntityFactory<BE extends TileEntityTransmitter> {
+    private interface BlockEntityFactory<BE extends BlockEntity> {
         BE create(Holder<Block> blockProvider, BlockPos pos, BlockState state);
     }
 

@@ -6,7 +6,6 @@ import mekanism.common.block.transmitter.BlockLargeTransmitter;
 import mekanism.common.item.block.transmitter.ItemBlockTransporter;
 import mekanism.common.tier.TransporterTier;
 import mekanism.common.util.UnitDisplayUtils;
-import net.minecraft.ChatFormatting;
 import net.minecraft.SharedConstants;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.TickRateManager;
@@ -45,6 +44,6 @@ public class AscendedItemBlockLogisticalTransporter extends ItemBlockTransporter
     @NotNull
     @Override
     public Component getName(@NotNull ItemStack stack) {
-        return super.getName(stack).copy().withStyle(ChatFormatting.GOLD);
+        return super.getName(stack).copy().withStyle(style -> style.withColor(AscendedTierValues.ASCENDED_TEXT_COLOR));
     }
 }
