@@ -1,6 +1,6 @@
 # Mekanism: Ascended
 
-Mekanism: Ascended is a NeoForge addon for Mekanism that extends the late-game tier progression beyond Ultimate with Ascended technology.
+Mekanism: Ascended is a NeoForge addon for [Mekanism](https://github.com/mekanism/mekanism) that extends the late-game tier progression beyond Ultimate with Ascended technology.
 
 The mod adds a new Ascended tier for core Mekanism systems, including storage, transport, factories, and induction multiblocks. It is built for players and modpacks that want a stronger post-Ultimate progression path while keeping the gameplay style close to Mekanism.
 
