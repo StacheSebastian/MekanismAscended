@@ -25,8 +25,8 @@ public abstract class FluidTankFluidTankMixin {
     @Inject(method = "<init>", at = @At("RETURN"))
     private void mekanismAscended$applyTankValues(TileEntityFluidTank tile, IContentsListener listener, CallbackInfo ci) {
         if (tile instanceof AscendedTEFluidTank) {
-            ((BasicFluidTankAccessor) this).mekanismAscended$setCapacity(AscendedTierValues.ASCENDED_FLUID_TANK_CAPACITY);
-            rate = () -> AscendedTierValues.ASCENDED_FLUID_TANK_OUTPUT;
+            ((BasicFluidTankAccessor) this).mekanismAscended$setCapacity(AscendedTierValues.ascendedFluidTankCapacity());
+            rate = () -> AscendedTierValues.ascendedFluidTankOutput();
         }
     }
 }

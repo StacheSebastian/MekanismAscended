@@ -14,19 +14,19 @@ public class AscendedChemicalTankChemicalTank extends BasicChemicalTank {
     }
 
     private AscendedChemicalTankChemicalTank(@Nullable IContentsListener listener) {
-        super(AscendedTierValues.ASCENDED_CHEMICAL_TANK_CAPACITY, ConstantPredicates.alwaysTrueBi(), ConstantPredicates.alwaysTrueBi(),
+        super(AscendedTierValues.ascendedChemicalTankCapacity(), ConstantPredicates.alwaysTrueBi(), ConstantPredicates.alwaysTrueBi(),
               ConstantPredicates.alwaysTrue(), null, listener, null);
     }
 
     @Override
     protected long getInsertRate(@Nullable AutomationType automationType) {
         //Only limit the internal rate to change the speed at which this can be filled from an item
-        return automationType == AutomationType.INTERNAL ? AscendedTierValues.ASCENDED_CHEMICAL_TANK_OUTPUT : super.getInsertRate(automationType);
+        return automationType == AutomationType.INTERNAL ? AscendedTierValues.ascendedChemicalTankOutput() : super.getInsertRate(automationType);
     }
 
     @Override
     protected long getExtractRate(@Nullable AutomationType automationType) {
         //Only limit the internal rate to change the speed at which this can be filled from an item
-        return automationType == AutomationType.INTERNAL ? AscendedTierValues.ASCENDED_CHEMICAL_TANK_OUTPUT : super.getExtractRate(automationType);
+        return automationType == AutomationType.INTERNAL ? AscendedTierValues.ascendedChemicalTankOutput() : super.getExtractRate(automationType);
     }
 }

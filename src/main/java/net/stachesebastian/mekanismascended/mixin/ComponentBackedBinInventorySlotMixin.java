@@ -17,6 +17,6 @@ public abstract class ComponentBackedBinInventorySlotMixin {
           at = @At(value = "INVOKE", target = "Lmekanism/common/tier/BinTier;getStorage()I")
     )
     private static int mekanismAscended$getStorage(BinTier tier, ItemStack attachedTo, int slotIndex, BinTier originalTier) {
-        return attachedTo.getItem() instanceof AscendedItemBlockBin ? AscendedTierValues.ASCENDED_BIN_CAPACITY : tier.getStorage();
+        return attachedTo.getItem() instanceof AscendedItemBlockBin ? AscendedTierValues.ascendedBinCapacity() : tier.getStorage();
     }
 }

@@ -13,11 +13,11 @@ public class AscendedPressurizedTube extends PressurizedTube implements IPressur
 
     @Override
     public long getCapacity() {
-        return AscendedTierValues.ASCENDED_PRESSURIZED_TUBE_CAPACITY;
+        return AscendedTierValues.ascendedPressurizedTubeCapacity();
     }
 
     @Override
     public long getTubePullAmount() {
-        return AscendedTierValues.ASCENDED_PRESSURIZED_TUBE_PULL_AMOUNT;
+        return AscendedTierValues.ascendedPressurizedTubePullAmount();
     }
 }

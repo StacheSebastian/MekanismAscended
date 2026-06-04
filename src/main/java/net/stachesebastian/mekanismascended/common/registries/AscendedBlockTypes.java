@@ -111,7 +111,7 @@ public class AscendedBlockTypes {
                             MekanismLang.DESCRIPTION_ENERGY_CUBE
                     )
                     .withGui(() -> MekanismContainerTypes.ENERGY_CUBE)
-                    .withEnergyConfig(() -> AscendedTierValues.ASCENDED_ENERGY_CUBE_CAPACITY)
+                    .withEnergyConfig(AscendedTierValues::ascendedEnergyCubeCapacity)
                     .with(new AttributeTier<>(EnergyCubeTier.ULTIMATE), new AttributeStateFacing(BlockStateProperties.FACING))
                     .withSideConfig(TransmissionType.ENERGY, TransmissionType.ITEM)
                     .without(AttributeParticleFX.class, AttributeStateActive.class, AttributeUpgradeSupport.class)
@@ -121,7 +121,7 @@ public class AscendedBlockTypes {
 
     public static final BlockTypeTile<TileEntityInductionCell> ASCENDED_INDUCTION_CELL =
             BlockTypeTile.BlockTileBuilder.createBlock(() -> AscendedTileEntityTypes.ASCENDED_INDUCTION_CELL, MekanismLang.DESCRIPTION_INDUCTION_CELL)
-                    .withEnergyConfig(() -> AscendedTierValues.ASCENDED_INDUCTION_CELL_CAPACITY)
+                    .withEnergyConfig(AscendedTierValues::ascendedInductionCellCapacity)
                     .with(new AttributeTier<>(InductionCellTier.ULTIMATE))
                     .internalMultiblock()
                     .build();
@@ -167,7 +167,7 @@ public class AscendedBlockTypes {
         AttributeEnergy originalEnergy = type.getBaseMachine().get(AttributeEnergy.class);
         factory.add(new AttributeEnergy(
               originalEnergy::getUsage,
-              () -> MathUtils.clampToLong(Math.max(originalEnergy.getConfigStorage() * 0.5, originalEnergy.getUsage()) * AscendedTierValues.ASCENDED_FACTORY_PROCESSES)
+              () -> MathUtils.clampToLong(Math.max(originalEnergy.getConfigStorage() * 0.5, originalEnergy.getUsage()) * AscendedTierValues.ascendedFactoryProcesses())
         ));
         return factory;
     }

@@ -13,16 +13,16 @@ public class AscendedThermodynamicConductor extends ThermodynamicConductor imple
 
     @Override
     public double getHeatCapacity() {
-        return AscendedTierValues.ASCENDED_THERMODYNAMIC_CONDUCTOR_HEAT_CAPACITY;
+        return AscendedTierValues.ascendedThermodynamicConductorHeatCapacity();
     }
 
     @Override
     public double getInverseConduction() {
-        return AscendedTierValues.ASCENDED_THERMODYNAMIC_CONDUCTOR_CONDUCTION;
+        return AscendedTierValues.ascendedThermodynamicConductorConduction();
     }
 
     @Override
     public double getInverseConductionInsulation() {
-        return AscendedTierValues.ASCENDED_THERMODYNAMIC_CONDUCTOR_INSULATION;
+        return AscendedTierValues.ascendedThermodynamicConductorInsulation();
     }
 }

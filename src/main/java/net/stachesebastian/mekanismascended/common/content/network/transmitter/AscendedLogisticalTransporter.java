@@ -15,17 +15,17 @@ public class AscendedLogisticalTransporter extends LogisticalTransporter impleme
 
     @Override
     public int getTransporterSpeed() {
-        return AscendedTierValues.ASCENDED_LOGISTICAL_TRANSPORTER_SPEED;
+        return AscendedTierValues.ascendedLogisticalTransporterSpeed();
     }
 
     @Override
     public int getTransporterPullAmount() {
-        return AscendedTierValues.ASCENDED_LOGISTICAL_TRANSPORTER_PULL_AMOUNT;
+        return AscendedTierValues.ascendedLogisticalTransporterPullAmount();
     }
 
     @Override
     public int getTransporterPullDelay() {
-        return AscendedTierValues.ASCENDED_LOGISTICAL_TRANSPORTER_PULL_DELAY;
+        return AscendedTierValues.ascendedLogisticalTransporterPullDelay();
     }
 
     @Override

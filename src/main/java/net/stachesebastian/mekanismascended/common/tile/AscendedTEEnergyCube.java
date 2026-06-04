@@ -26,8 +26,8 @@ public class AscendedTEEnergyCube extends TileEntityEnergyCube {
     protected IEnergyContainerHolder getInitialEnergyContainers(IContentsListener listener) {
         EnergyContainerHelper builder = EnergyContainerHelper.forSideWithConfig(this);
         EnergyCubeEnergyContainer energyContainer = EnergyCubeEnergyContainer.create(getTier(), listener);
-        ((BasicEnergyContainerAccessor) (Object) energyContainer).mekanismAscended$setMaxEnergy(AscendedTierValues.ASCENDED_ENERGY_CUBE_CAPACITY);
-        ((EnergyCubeEnergyContainerAccessor) (Object) energyContainer).mekanismAscended$setRate(() -> AscendedTierValues.ASCENDED_ENERGY_CUBE_OUTPUT);
+        ((BasicEnergyContainerAccessor) (Object) energyContainer).mekanismAscended$setMaxEnergy(AscendedTierValues.ascendedEnergyCubeCapacity());
+        ((EnergyCubeEnergyContainerAccessor) (Object) energyContainer).mekanismAscended$setRate(AscendedTierValues::ascendedEnergyCubeOutput);
         ((TileEntityEnergyCubeAccessor) this).mekanismAscended$setEnergyContainer(energyContainer);
         builder.addContainer(energyContainer);
         return builder.build();

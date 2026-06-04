@@ -22,7 +22,7 @@ public abstract class TileEntitySawingFactoryMixin {
                     opcode = Opcodes.GETFIELD)
     )
     private int mekanismAscended$getProcesses(FactoryTier tier) {
-        return (Object) this instanceof IAscendedFactoryTE ? AscendedTierValues.ASCENDED_FACTORY_PROCESSES : tier.processes;
+        return (Object) this instanceof IAscendedFactoryTE ? AscendedTierValues.ascendedFactoryProcesses() : tier.processes;
     }
 
     @ModifyVariable(method = "addSlots", at = @At("STORE"), name = "baseX")

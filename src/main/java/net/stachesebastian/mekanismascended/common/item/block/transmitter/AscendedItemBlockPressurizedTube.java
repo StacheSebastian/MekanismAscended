@@ -38,13 +38,13 @@ public class AscendedItemBlockPressurizedTube extends ItemBlockTooltip<BlockSmal
     @Override
     protected void addStats(@NotNull ItemStack stack, @NotNull Item.TooltipContext context, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
         super.addStats(stack, context, tooltip, flag);
-        tooltip.add(MekanismLang.CAPACITY_MB_PER_TICK.translateColored(EnumColor.INDIGO, EnumColor.GRAY, TextUtils.format(AscendedTierValues.ASCENDED_PRESSURIZED_TUBE_CAPACITY)));
-        tooltip.add(MekanismLang.PUMP_RATE_MB.translateColored(EnumColor.INDIGO, EnumColor.GRAY, TextUtils.format(AscendedTierValues.ASCENDED_PRESSURIZED_TUBE_PULL_AMOUNT)));
+        tooltip.add(MekanismLang.CAPACITY_MB_PER_TICK.translateColored(EnumColor.INDIGO, EnumColor.GRAY, TextUtils.format(AscendedTierValues.ascendedPressurizedTubeCapacity())));
+        tooltip.add(MekanismLang.PUMP_RATE_MB.translateColored(EnumColor.INDIGO, EnumColor.GRAY, TextUtils.format(AscendedTierValues.ascendedPressurizedTubePullAmount())));
     }
 
     @NotNull
     @Override
     public Component getName(@NotNull ItemStack stack) {
-        return super.getName(stack).copy().withStyle(style -> style.withColor(AscendedTierValues.ASCENDED_TEXT_COLOR));
+        return super.getName(stack).copy().withStyle(style -> style.withColor(AscendedTierValues.ascendedTextColor()));
     }
 }

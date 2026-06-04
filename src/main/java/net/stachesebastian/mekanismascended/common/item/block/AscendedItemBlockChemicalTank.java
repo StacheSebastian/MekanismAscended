@@ -33,7 +33,7 @@ public class AscendedItemBlockChemicalTank extends ItemBlockChemicalTank {
             addDetails(stack, context, tooltip, flag);
         } else {
             StorageUtils.addStoredSubstance(stack, tooltip, false);
-            tooltip.add(MekanismLang.CAPACITY_MB.translateColored(EnumColor.INDIGO, EnumColor.GRAY, TextUtils.format(AscendedTierValues.ASCENDED_CHEMICAL_TANK_CAPACITY)));
+            tooltip.add(MekanismLang.CAPACITY_MB.translateColored(EnumColor.INDIGO, EnumColor.GRAY, TextUtils.format(AscendedTierValues.ascendedChemicalTankCapacity())));
             tooltip.add(MekanismLang.HOLD_FOR_DETAILS.translateColored(EnumColor.GRAY, EnumColor.INDIGO, MekanismKeyHandler.detailsKey.getTranslatedKeyMessage()));
             tooltip.add(MekanismLang.HOLD_FOR_DESCRIPTION.translateColored(EnumColor.GRAY, EnumColor.AQUA, MekanismKeyHandler.descriptionKey.getTranslatedKeyMessage()));
         }
@@ -42,6 +42,6 @@ public class AscendedItemBlockChemicalTank extends ItemBlockChemicalTank {
     @NotNull
     @Override
     public Component getName(@NotNull ItemStack stack) {
-        return super.getName(stack).copy().withStyle(style -> style.withColor(AscendedTierValues.ASCENDED_TEXT_COLOR));
+        return super.getName(stack).copy().withStyle(style -> style.withColor(AscendedTierValues.ascendedTextColor()));
     }
 }

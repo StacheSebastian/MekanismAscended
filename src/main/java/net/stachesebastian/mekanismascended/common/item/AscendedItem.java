@@ -14,6 +14,6 @@ public class AscendedItem extends Item {
     @NotNull
     @Override
     public Component getName(@NotNull ItemStack stack) {
-        return super.getName(stack).copy().withStyle(style -> style.withColor(AscendedTierValues.ASCENDED_TEXT_COLOR));
+        return super.getName(stack).copy().withStyle(style -> style.withColor(AscendedTierValues.ascendedTextColor()));
     }
 }

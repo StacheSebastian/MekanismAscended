@@ -13,6 +13,6 @@ public abstract class TileEntityEnergyCubeMixin {
 
     @Redirect(method = "lambda$new$0", at = @At(value = "INVOKE", target = "Lmekanism/common/tier/EnergyCubeTier;getOutput()J"))
     private long mekanismAscended$getOutput(EnergyCubeTier tier) {
-        return (Object) this instanceof AscendedTEEnergyCube ? AscendedTierValues.ASCENDED_ENERGY_CUBE_OUTPUT : tier.getOutput();
+        return (Object) this instanceof AscendedTEEnergyCube ? AscendedTierValues.ascendedEnergyCubeOutput() : tier.getOutput();
     }
 }

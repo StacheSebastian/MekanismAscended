@@ -24,12 +24,12 @@ public class AscendedItemBlockInductionProvider extends ItemBlockInductionProvid
 
     @Override
     protected void addStats(@NotNull ItemStack stack, @NotNull Item.TooltipContext context, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
-        tooltip.add(MekanismLang.INDUCTION_PORT_OUTPUT_RATE.translateColored(AscendedTierValues.ASCENDED_TEXT_COLOR, EnumColor.GRAY, EnergyDisplay.of(AscendedTierValues.ASCENDED_INDUCTION_PROVIDER_OUTPUT)));
+        tooltip.add(MekanismLang.INDUCTION_PORT_OUTPUT_RATE.translateColored(AscendedTierValues.ascendedTextColor(), EnumColor.GRAY, EnergyDisplay.of(AscendedTierValues.ascendedInductionProviderOutput())));
     }
 
     @NotNull
     @Override
     public Component getName(@NotNull ItemStack stack) {
-        return super.getName(stack).copy().withStyle(style -> style.withColor(AscendedTierValues.ASCENDED_TEXT_COLOR));
+        return super.getName(stack).copy().withStyle(style -> style.withColor(AscendedTierValues.ascendedTextColor()));
     }
 }

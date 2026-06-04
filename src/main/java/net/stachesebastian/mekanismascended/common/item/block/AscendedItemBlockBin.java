@@ -36,13 +36,13 @@ public class AscendedItemBlockBin extends ItemBlockBin {
             if (!lockStack.isEmpty()) {
                 tooltip.add(MekanismLang.LOCKED.translateColored(EnumColor.AQUA, EnumColor.GRAY, lockStack));
             }
-            tooltip.add(MekanismLang.CAPACITY_ITEMS.translateColored(EnumColor.INDIGO, EnumColor.GRAY, TextUtils.format(AscendedTierValues.ASCENDED_BIN_CAPACITY)));
+            tooltip.add(MekanismLang.CAPACITY_ITEMS.translateColored(EnumColor.INDIGO, EnumColor.GRAY, TextUtils.format(AscendedTierValues.ascendedBinCapacity())));
         }
     }
 
     @NotNull
     @Override
     public Component getName(@NotNull ItemStack stack) {
-        return super.getName(stack).copy().withStyle(style -> style.withColor(AscendedTierValues.ASCENDED_TEXT_COLOR));
+        return super.getName(stack).copy().withStyle(style -> style.withColor(AscendedTierValues.ascendedTextColor()));
     }
 }

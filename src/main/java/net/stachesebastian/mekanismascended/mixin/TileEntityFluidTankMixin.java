@@ -13,6 +13,6 @@ public abstract class TileEntityFluidTankMixin {
 
     @Redirect(method = "onUpdateServer", at = @At(value = "INVOKE", target = "Lmekanism/common/tier/FluidTankTier;getOutput()I"))
     private int mekanismAscended$getOutput(FluidTankTier tier) {
-        return (Object) this instanceof AscendedTEFluidTank ? AscendedTierValues.ASCENDED_FLUID_TANK_OUTPUT : tier.getOutput();
+        return (Object) this instanceof AscendedTEFluidTank ? AscendedTierValues.ascendedFluidTankOutput() : tier.getOutput();
     }
 }

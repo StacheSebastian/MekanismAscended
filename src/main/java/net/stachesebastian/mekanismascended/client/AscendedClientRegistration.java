@@ -54,7 +54,7 @@ public class AscendedClientRegistration {
     public static void registerBlockColorHandlers(RegisterColorHandlersEvent.Block event) {
         ClientRegistrationUtil.registerBlockColorHandler(event, (state, world, pos, tintIndex) -> {
             if (tintIndex == 1) {
-                return AscendedTierValues.ASCENDED_FLUID_TANK_COLOR;
+                return AscendedTierValues.ascendedFluidTankColor();
             }
             return -1;
         }, AscendedBlocks.ASCENDED_FLUID_TANK);
@@ -73,7 +73,7 @@ public class AscendedClientRegistration {
     public static void registerItemColorHandlers(RegisterColorHandlersEvent.Item event) {
         ClientRegistrationUtil.registerItemColorHandler(event, (stack, tintIndex) -> {
             if (tintIndex == 1) {
-                return AscendedTierValues.ASCENDED_FLUID_TANK_COLOR;
+                return AscendedTierValues.ascendedFluidTankColor();
             }
             return -1;
         }, AscendedBlocks.ASCENDED_FLUID_TANK);

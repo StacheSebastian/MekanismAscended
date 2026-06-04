@@ -32,7 +32,7 @@ public class AscendedItemBlockEnergyCube extends ItemBlockEnergyCube {
             addDetails(stack, context, tooltip, flag);
         } else {
             StorageUtils.addStoredEnergy(stack, tooltip, true);
-            tooltip.add(MekanismLang.CAPACITY.translateColored(EnumColor.INDIGO, EnumColor.GRAY, EnergyDisplay.of(AscendedTierValues.ASCENDED_ENERGY_CUBE_CAPACITY)));
+            tooltip.add(MekanismLang.CAPACITY.translateColored(EnumColor.INDIGO, EnumColor.GRAY, EnergyDisplay.of(AscendedTierValues.ascendedEnergyCubeCapacity())));
             tooltip.add(MekanismLang.HOLD_FOR_DETAILS.translateColored(EnumColor.GRAY, EnumColor.INDIGO, MekanismKeyHandler.detailsKey.getTranslatedKeyMessage()));
             tooltip.add(MekanismLang.HOLD_FOR_DESCRIPTION.translateColored(EnumColor.GRAY, EnumColor.AQUA, MekanismKeyHandler.descriptionKey.getTranslatedKeyMessage()));
         }
@@ -41,12 +41,12 @@ public class AscendedItemBlockEnergyCube extends ItemBlockEnergyCube {
     @Override
     protected EnergyContainersBuilder addDefaultEnergyContainers(EnergyContainersBuilder builder) {
         return builder.addBasic(ConstantPredicates.alwaysTrue(), ConstantPredicates.alwaysTrue(),
-              () -> AscendedTierValues.ASCENDED_ENERGY_CUBE_OUTPUT, () -> AscendedTierValues.ASCENDED_ENERGY_CUBE_CAPACITY);
+                AscendedTierValues::ascendedEnergyCubeOutput, AscendedTierValues::ascendedEnergyCubeCapacity);
     }
 
     @NotNull
     @Override
     public Component getName(@NotNull ItemStack stack) {
-        return super.getName(stack).copy().withStyle(style -> style.withColor(AscendedTierValues.ASCENDED_TEXT_COLOR));
+        return super.getName(stack).copy().withStyle(style -> style.withColor(AscendedTierValues.ascendedTextColor()));
     }
 }

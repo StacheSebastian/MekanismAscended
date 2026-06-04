@@ -14,6 +14,6 @@ public class AscendedComponentBackedChemicalTank extends ComponentBackedChemical
 
     private AscendedComponentBackedChemicalTank(ItemStack attachedTo, int tankIndex) {
         super(attachedTo, tankIndex, ConstantPredicates.alwaysTrueBi(), ConstantPredicates.alwaysTrueBi(), ConstantPredicates.alwaysTrue(),
-              () -> AscendedTierValues.ASCENDED_CHEMICAL_TANK_OUTPUT, () -> AscendedTierValues.ASCENDED_CHEMICAL_TANK_CAPACITY, null);
+                AscendedTierValues::ascendedChemicalTankOutput, AscendedTierValues::ascendedChemicalTankCapacity, null);
     }
 }

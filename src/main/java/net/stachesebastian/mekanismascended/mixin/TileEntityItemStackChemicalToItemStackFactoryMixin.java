@@ -26,6 +26,6 @@ public abstract class TileEntityItemStackChemicalToItemStackFactoryMixin {
             )
     )
     private int mekanismAscended$getProcesses(FactoryTier tier) {
-        return (Object) this instanceof IAscendedFactoryTE ? AscendedTierValues.ASCENDED_FACTORY_PROCESSES : tier.processes;
+        return (Object) this instanceof IAscendedFactoryTE ? AscendedTierValues.ascendedFactoryProcesses() : tier.processes;
     }
 }

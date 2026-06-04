@@ -1,57 +1,129 @@
 package net.stachesebastian.mekanismascended.common.tier;
 
-import mekanism.api.heat.HeatAPI;
+import mekanism.common.tier.BinTier;
+import mekanism.common.tier.CableTier;
+import mekanism.common.tier.ChemicalTankTier;
+import mekanism.common.tier.ConductorTier;
+import mekanism.common.tier.EnergyCubeTier;
+import mekanism.common.tier.FluidTankTier;
+import mekanism.common.tier.InductionCellTier;
+import mekanism.common.tier.InductionProviderTier;
+import mekanism.common.tier.PipeTier;
+import mekanism.common.tier.TransporterTier;
+import mekanism.common.tier.TubeTier;
 import net.minecraft.network.chat.TextColor;
-import net.neoforged.neoforge.fluids.FluidType;
+import net.stachesebastian.mekanismascended.Config;
 
 public class AscendedTierValues {
 
-    public static final TextColor ASCENDED_TEXT_COLOR = TextColor.fromRgb(0xFAD64A);
+    public static TextColor ascendedTextColor() {
+        return TextColor.fromRgb(parseHexColor(Config.getClientOrDefault(Config.CLIENT.ascendedTextColor)));
+    }
 
-    //Universal Cable
-    public static long ASCENDED_UNIVERSAL_CABLE_CAPACITY = 16 * 8192000L; //ULTIMATE: 8192000L
+    public static long ascendedUniversalCableCapacity() {
+        return multiplyLong(CableTier.ULTIMATE.getCableCapacity(), Config.getServerOrDefault(Config.SERVER.universalCableCapacityMultiplier));
+    }
 
-    //Mechanical Pipe
-    public static long ASCENDED_MECHANICAL_PIPE_CAPACITY = 16 * 128 * FluidType.BUCKET_VOLUME; //ULTIMATE: 128 * FluidType.BUCKET_VOLUME
-    public static int ASCENDED_MECHANICAL_PIPE_PULL_AMOUNT = 16 * 32 * FluidType.BUCKET_VOLUME; //ULTIMATE: 32 * FluidType.BUCKET_VOLUME
+    public static long ascendedMechanicalPipeCapacity() {
+        return multiplyLong(PipeTier.ULTIMATE.getPipeCapacity(), Config.getServerOrDefault(Config.SERVER.mechanicalPipeCapacityMultiplier));
+    }
 
-    //Thermodynamic Conductor
-    public static double ASCENDED_THERMODYNAMIC_CONDUCTOR_CONDUCTION = 5; //ULTIMATE: 5
-    public static double ASCENDED_THERMODYNAMIC_CONDUCTOR_HEAT_CAPACITY = HeatAPI.DEFAULT_HEAT_CAPACITY; //ULTIMATE: HeatAPI.DEFAULT_HEAT_CAPACITY (1)
-    public static double ASCENDED_THERMODYNAMIC_CONDUCTOR_INSULATION = 100 * 100000; //ULTIMATE: 100000
+    public static int ascendedMechanicalPipePullAmount() {
+        return multiplyInt(PipeTier.ULTIMATE.getPipePullAmount(), Config.getServerOrDefault(Config.SERVER.mechanicalPipePullAmountMultiplier));
+    }
 
-    public static int ASCENDED_LOGISTICAL_TRANSPORTER_SPEED = 50; //ULTIMATE: 50 (Max: 100, any bigger value would need multiple updates per tick, workaround not worth performance risk) (Animation is skipped at 100)
-    public static int ASCENDED_LOGISTICAL_TRANSPORTER_PULL_AMOUNT = 4 * 64; //ULTIMATE: 64
-    public static int ASCENDED_LOGISTICAL_TRANSPORTER_PULL_DELAY = 5; //ULTIMATE: 10 (Changed Delay to substitute unchanged Transporter Speed)
+    public static double ascendedThermodynamicConductorConduction() {
+        return ConductorTier.ULTIMATE.getInverseConduction() * Config.getServerOrDefault(Config.SERVER.thermodynamicConductorConductionMultiplier);
+    }
 
-    public static int ASCENDED_PRESSURIZED_TUBE_CAPACITY = 16 * 1024 * FluidType.BUCKET_VOLUME; //ULTIMATE: 1024 * FluidType.BUCKET_VOLUME
-    public static int ASCENDED_PRESSURIZED_TUBE_PULL_AMOUNT = 16 * 256 * FluidType.BUCKET_VOLUME; //ULTIMATE: 256 * FluidType.BUCKET_VOLUME
+    public static double ascendedThermodynamicConductorHeatCapacity() {
+        return ConductorTier.ULTIMATE.getHeatCapacity() * Config.getServerOrDefault(Config.SERVER.thermodynamicConductorHeatCapacityMultiplier);
+    }
 
-    //Fluid Tank
-    public static int ASCENDED_FLUID_TANK_COLOR = 0xFFFFAA00;
-    public static int ASCENDED_FLUID_TANK_CAPACITY = 16 * 256 * FluidType.BUCKET_VOLUME; //ULTIMATE: 256 * FluidType.BUCKET_VOLUME
-    public static int ASCENDED_FLUID_TANK_OUTPUT = 16 * 64 * FluidType.BUCKET_VOLUME; //ULTIMATE: 64 * FluidType.BUCKET_VOLUME
+    public static double ascendedThermodynamicConductorInsulation() {
+        return ConductorTier.ULTIMATE.getInverseConductionInsulation() * Config.getServerOrDefault(Config.SERVER.thermodynamicConductorInsulationMultiplier);
+    }
 
-    //Chemical Tank
-    public static long ASCENDED_CHEMICAL_TANK_CAPACITY = 16 * 8192L * FluidType.BUCKET_VOLUME; //ULTIMATE: 8192 * FluidType.BUCKET_VOLUME
-    public static long ASCENDED_CHEMICAL_TANK_OUTPUT = 16 * 512L * FluidType.BUCKET_VOLUME; //ULTIMATE: 512 * FluidType.BUCKET_VOLUME
+    public static int ascendedLogisticalTransporterSpeed() {
+        return Config.getServerOrDefault(Config.SERVER.logisticalTransporterSpeed);
+    }
 
-    //Energy Cube
-    public static long ASCENDED_ENERGY_CUBE_CAPACITY = 16 * 256000000L; //ULTIMATE: 256000000
-    public static long ASCENDED_ENERGY_CUBE_OUTPUT = 16 * 256000L; //ULTIMATE: 256000
+    public static int ascendedLogisticalTransporterPullAmount() {
+        return multiplyInt(TransporterTier.ULTIMATE.getPullAmount(), Config.getServerOrDefault(Config.SERVER.logisticalTransporterPullAmountMultiplier));
+    }
 
-    //Induction Cell
-    public static long ASCENDED_INDUCTION_CELL_CAPACITY = 16 * 4000000000000L; //ULTIMATE: 4000000000000
+    public static int ascendedLogisticalTransporterPullDelay() {
+        return Config.getServerOrDefault(Config.SERVER.logisticalTransporterPullDelay);
+    }
 
-    //Induction Provider
-    public static long ASCENDED_INDUCTION_PROVIDER_OUTPUT = 16 * 131072000L; //ULTIMATE: 131072000
+    public static int ascendedPressurizedTubeCapacity() {
+        return multiplyInt(TubeTier.ULTIMATE.getTubeCapacity(), Config.getServerOrDefault(Config.SERVER.pressurizedTubeCapacityMultiplier));
+    }
 
-    //Bin
-    public static int ASCENDED_BIN_CAPACITY = 16 * 262144; //ULTIMATE: 262144
+    public static int ascendedPressurizedTubePullAmount() {
+        return multiplyInt(TubeTier.ULTIMATE.getTubePullAmount(), Config.getServerOrDefault(Config.SERVER.pressurizedTubePullAmountMultiplier));
+    }
 
-    //Factories
-    public static int ASCENDED_FACTORY_PROCESSES = 15; //ULTIMATE: 9
+    public static int ascendedFluidTankColor() {
+        return parseHexColor(Config.getClientOrDefault(Config.CLIENT.fluidTankColor));
+    }
 
+    public static int ascendedFluidTankCapacity() {
+        return multiplyInt(FluidTankTier.ULTIMATE.getStorage(), Config.getServerOrDefault(Config.SERVER.fluidTankCapacityMultiplier));
+    }
 
-    public AscendedTierValues() {}
+    public static int ascendedFluidTankOutput() {
+        return multiplyInt(FluidTankTier.ULTIMATE.getOutput(), Config.getServerOrDefault(Config.SERVER.fluidTankOutputMultiplier));
+    }
+
+    public static long ascendedChemicalTankCapacity() {
+        return multiplyLong(ChemicalTankTier.ULTIMATE.getStorage(), Config.getServerOrDefault(Config.SERVER.chemicalTankCapacityMultiplier));
+    }
+
+    public static long ascendedChemicalTankOutput() {
+        return multiplyLong(ChemicalTankTier.ULTIMATE.getOutput(), Config.getServerOrDefault(Config.SERVER.chemicalTankOutputMultiplier));
+    }
+
+    public static long ascendedEnergyCubeCapacity() {
+        return multiplyLong(EnergyCubeTier.ULTIMATE.getMaxEnergy(), Config.getServerOrDefault(Config.SERVER.energyCubeCapacityMultiplier));
+    }
+
+    public static long ascendedEnergyCubeOutput() {
+        return multiplyLong(EnergyCubeTier.ULTIMATE.getOutput(), Config.getServerOrDefault(Config.SERVER.energyCubeOutputMultiplier));
+    }
+
+    public static long ascendedInductionCellCapacity() {
+        return multiplyLong(InductionCellTier.ULTIMATE.getMaxEnergy(), Config.getServerOrDefault(Config.SERVER.inductionCellCapacityMultiplier));
+    }
+
+    public static long ascendedInductionProviderOutput() {
+        return multiplyLong(InductionProviderTier.ULTIMATE.getOutput(), Config.getServerOrDefault(Config.SERVER.inductionProviderOutputMultiplier));
+    }
+
+    public static int ascendedBinCapacity() {
+        return multiplyInt(BinTier.ULTIMATE.getStorage(), Config.getServerOrDefault(Config.SERVER.binCapacityMultiplier));
+    }
+
+    public static int ascendedFactoryProcesses() {
+        return Config.getServerOrDefault(Config.SERVER.factoryProcesses);
+    }
+
+    private static int multiplyInt(int base, double multiplier) {
+        return Math.toIntExact(Math.min(Integer.MAX_VALUE, multiplyLong(base, multiplier)));
+    }
+
+    private static int multiplyInt(long base, double multiplier) {
+        return Math.toIntExact(Math.min(Integer.MAX_VALUE, multiplyLong(base, multiplier)));
+    }
+
+    private static long multiplyLong(long base, double multiplier) {
+        return Math.round(base * multiplier);
+    }
+
+    private static int parseHexColor(String value) {
+        String color = value.startsWith("#") ? value.substring(1) : value;
+        return (int) Long.parseLong(color, 16);
+    }
+
+    private AscendedTierValues() {}
 }

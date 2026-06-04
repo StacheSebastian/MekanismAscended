@@ -37,14 +37,14 @@ public class AscendedItemBlockThermodynamicConductor extends ItemBlockTooltip<Bl
     @Override
     protected void addStats(@NotNull ItemStack stack, @NotNull Item.TooltipContext context, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
         super.addStats(stack, context, tooltip, flag);
-        tooltip.add(MekanismLang.CONDUCTION.translateColored(EnumColor.INDIGO, EnumColor.GRAY, AscendedTierValues.ASCENDED_THERMODYNAMIC_CONDUCTOR_CONDUCTION));
-        tooltip.add(MekanismLang.INSULATION.translateColored(EnumColor.INDIGO, EnumColor.GRAY, AscendedTierValues.ASCENDED_THERMODYNAMIC_CONDUCTOR_INSULATION));
-        tooltip.add(MekanismLang.HEAT_CAPACITY.translateColored(EnumColor.INDIGO, EnumColor.GRAY, AscendedTierValues.ASCENDED_THERMODYNAMIC_CONDUCTOR_HEAT_CAPACITY));
+        tooltip.add(MekanismLang.CONDUCTION.translateColored(EnumColor.INDIGO, EnumColor.GRAY, AscendedTierValues.ascendedThermodynamicConductorConduction()));
+        tooltip.add(MekanismLang.INSULATION.translateColored(EnumColor.INDIGO, EnumColor.GRAY, AscendedTierValues.ascendedThermodynamicConductorInsulation()));
+        tooltip.add(MekanismLang.HEAT_CAPACITY.translateColored(EnumColor.INDIGO, EnumColor.GRAY, AscendedTierValues.ascendedThermodynamicConductorHeatCapacity()));
     }
 
     @NotNull
     @Override
     public Component getName(@NotNull ItemStack stack) {
-        return super.getName(stack).copy().withStyle(style -> style.withColor(AscendedTierValues.ASCENDED_TEXT_COLOR));
+        return super.getName(stack).copy().withStyle(style -> style.withColor(AscendedTierValues.ascendedTextColor()));
     }
 }

@@ -25,7 +25,7 @@ public abstract class MatrixEnergyContainerMixin {
     @Inject(method = "addProvider", at = @At("HEAD"))
     private void mekanismAscended$addProvider(BlockPos pos, TileEntityInductionProvider provider, CallbackInfo ci) {
         if (BlockType.is(provider.getBlockState().getBlock(), AscendedBlockTypes.ASCENDED_INDUCTION_PROVIDER)) {
-            mekanismAscended$providerOutputs.put(pos, AscendedTierValues.ASCENDED_INDUCTION_PROVIDER_OUTPUT);
+            mekanismAscended$providerOutputs.put(pos, AscendedTierValues.ascendedInductionProviderOutput());
         } else {
             mekanismAscended$providerOutputs.remove(pos);
         }

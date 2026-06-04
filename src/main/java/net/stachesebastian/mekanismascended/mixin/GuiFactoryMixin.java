@@ -43,7 +43,7 @@ public abstract class GuiFactoryMixin extends GuiConfigurableTile<TileEntityFact
             )
     )
     private int mekanismAscended$getProcesses(FactoryTier tier) {
-        return AscendedFactoryUtil.isAscendedFactory(tile) ? AscendedTierValues.ASCENDED_FACTORY_PROCESSES : tier.processes;
+        return AscendedFactoryUtil.isAscendedFactory(tile) ? AscendedTierValues.ascendedFactoryProcesses() : tier.processes;
     }
 
     @ModifyVariable(method = "addGuiElements", at = @At("STORE"), name = "baseX")

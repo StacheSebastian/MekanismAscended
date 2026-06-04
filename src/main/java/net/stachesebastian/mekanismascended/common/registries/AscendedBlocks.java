@@ -117,7 +117,7 @@ public class AscendedBlocks {
     private static <TILE extends TileEntityFactory<?>> BlockRegistryObject<BlockFactory<?>, AscendedItemBlockFactory> registerAscendedFactory(String name, Factory<TILE> type) {
         BlockRegistryObject<BlockFactory<?>, AscendedItemBlockFactory> factory = BLOCKS.register(name, () -> new BlockFactory<>(type), AscendedItemBlockFactory::new);
         factory.forItemHolder(holder -> {
-            int processes = AscendedTierValues.ASCENDED_FACTORY_PROCESSES;
+            int processes = AscendedTierValues.ascendedFactoryProcesses();
             Predicate<ItemStack> recipeInputPredicate = switch (type.getFactoryType()) {
                 case SMELTING -> stack -> MekanismRecipeType.SMELTING.getInputCache().containsInput(null, stack);
                 case ENRICHING -> stack -> MekanismRecipeType.ENRICHING.getInputCache().containsInput(null, stack);

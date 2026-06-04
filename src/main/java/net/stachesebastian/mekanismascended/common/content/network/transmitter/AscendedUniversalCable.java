@@ -13,6 +13,6 @@ public class AscendedUniversalCable extends UniversalCable {
 
     @Override
     public long getCapacity() {
-        return AscendedTierValues.ASCENDED_UNIVERSAL_CABLE_CAPACITY;
+        return AscendedTierValues.ascendedUniversalCableCapacity();
     }
 }

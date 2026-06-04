@@ -17,7 +17,7 @@ public final class AscendedFactoryUtil {
     }
 
     public static int getProcesses(TileEntityFactory<?> tile) {
-        return isAscendedFactory(tile) ? AscendedTierValues.ASCENDED_FACTORY_PROCESSES : tile.tier.processes;
+        return isAscendedFactory(tile) ? AscendedTierValues.ascendedFactoryProcesses() : tile.tier.processes;
     }
 
     public static int getExtraGuiWidth(TileEntityFactory<?> tile) {

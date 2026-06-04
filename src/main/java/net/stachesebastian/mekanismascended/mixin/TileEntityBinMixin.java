@@ -24,7 +24,7 @@ public abstract class TileEntityBinMixin {
         BinInventorySlot slot = BinInventorySlot.create(listener, tier);
         if ((Object) this instanceof AscendedTEBin) {
             ((BasicInventorySlotAccessor) slot)
-                    .mekanismAscended$setLimit(AscendedTierValues.ASCENDED_BIN_CAPACITY);
+                    .mekanismAscended$setLimit(AscendedTierValues.ascendedBinCapacity());
         }
         return slot;
     }

@@ -35,8 +35,8 @@ public class AscendedItemBlockLogisticalTransporter extends ItemBlockTransporter
         super.addStats(stack, context, tooltip, flag);
         //Ensure no one somehow passes in invalid data
         float tickRate = Math.max(context.tickRate(), TickRateManager.MIN_TICKRATE);
-        float speed = AscendedTierValues.ASCENDED_LOGISTICAL_TRANSPORTER_SPEED / (5 * SharedConstants.TICKS_PER_SECOND / tickRate);
-        float pull = AscendedTierValues.ASCENDED_LOGISTICAL_TRANSPORTER_PULL_AMOUNT * tickRate / AscendedTierValues.ASCENDED_LOGISTICAL_TRANSPORTER_PULL_DELAY;
+        float speed = AscendedTierValues.ascendedLogisticalTransporterSpeed() / (5 * SharedConstants.TICKS_PER_SECOND / tickRate);
+        float pull = AscendedTierValues.ascendedLogisticalTransporterPullAmount() * tickRate / AscendedTierValues.ascendedLogisticalTransporterPullDelay();
         tooltip.add(MekanismLang.SPEED.translateColored(EnumColor.INDIGO, EnumColor.GRAY, UnitDisplayUtils.roundDecimals(speed)));
         tooltip.add(MekanismLang.PUMP_RATE.translateColored(EnumColor.INDIGO, EnumColor.GRAY, UnitDisplayUtils.roundDecimals(pull)));
     }
@@ -44,6 +44,6 @@ public class AscendedItemBlockLogisticalTransporter extends ItemBlockTransporter
     @NotNull
     @Override
     public Component getName(@NotNull ItemStack stack) {
-        return super.getName(stack).copy().withStyle(style -> style.withColor(AscendedTierValues.ASCENDED_TEXT_COLOR));
+        return super.getName(stack).copy().withStyle(style -> style.withColor(AscendedTierValues.ascendedTextColor()));
     }
 }

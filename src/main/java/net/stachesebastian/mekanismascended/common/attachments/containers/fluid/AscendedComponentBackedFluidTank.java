@@ -14,6 +14,6 @@ public class AscendedComponentBackedFluidTank extends ComponentBackedFluidTank {
 
     private AscendedComponentBackedFluidTank(ItemStack attachedTo, int tankIndex) {
         super(attachedTo, tankIndex, ConstantPredicates.alwaysTrueBi(), ConstantPredicates.alwaysTrueBi(), ConstantPredicates.alwaysTrue(),
-              () -> AscendedTierValues.ASCENDED_FLUID_TANK_OUTPUT, () -> AscendedTierValues.ASCENDED_FLUID_TANK_CAPACITY);
+                AscendedTierValues::ascendedFluidTankOutput, AscendedTierValues::ascendedFluidTankCapacity);
     }
 }

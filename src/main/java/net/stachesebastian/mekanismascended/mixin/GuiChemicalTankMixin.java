@@ -14,6 +14,6 @@ public abstract class GuiChemicalTankMixin {
     @Redirect(method = "lambda$addGuiElements$0", at = @At(value = "INVOKE", target = "Lmekanism/common/tier/ChemicalTankTier;getStorage()J"))
     private long mekanismAscended$getStorage(ChemicalTankTier tier) {
         GuiChemicalTank gui = (GuiChemicalTank) (Object) this;
-        return gui.getTileEntity() instanceof AscendedTEChemicalTank ? AscendedTierValues.ASCENDED_CHEMICAL_TANK_CAPACITY : tier.getStorage();
+        return gui.getTileEntity() instanceof AscendedTEChemicalTank ? AscendedTierValues.ascendedChemicalTankCapacity() : tier.getStorage();
     }
 }

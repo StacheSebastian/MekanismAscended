@@ -13,11 +13,11 @@ public class AscendedMechanicalPipe extends MechanicalPipe implements IMechanica
 
     @Override
     public long getCapacity() {
-        return AscendedTierValues.ASCENDED_MECHANICAL_PIPE_CAPACITY;
+        return AscendedTierValues.ascendedMechanicalPipeCapacity();
     }
 
     @Override
     public int getPipePullAmount() {
-        return AscendedTierValues.ASCENDED_MECHANICAL_PIPE_PULL_AMOUNT;
+        return AscendedTierValues.ascendedMechanicalPipePullAmount();
     }
 }
