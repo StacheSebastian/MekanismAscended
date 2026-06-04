@@ -92,15 +92,22 @@ public class Config {
         private Server(ModConfigSpec.Builder builder) {
             builder.push("transmitters");
 
+            builder.push("universal_cable");
             universalCableCapacityMultiplier = multiplier(builder, "universalCableCapacityMultiplier", 16.0, "Multiplier against Ultimate Universal Cable capacity.");
+            builder.pop();
 
+            builder.push("mechanical_pipe");
             mechanicalPipeCapacityMultiplier = multiplier(builder, "mechanicalPipeCapacityMultiplier", 16.0, "Multiplier against Ultimate Mechanical Pipe capacity.");
             mechanicalPipePullAmountMultiplier = multiplier(builder, "mechanicalPipePullAmountMultiplier", 16.0, "Multiplier against Ultimate Mechanical Pipe pull amount.");
+            builder.pop();
 
+            builder.push("thermodynamic_conductor");
             thermodynamicConductorConductionMultiplier = multiplier(builder, "thermodynamicConductorConductionMultiplier", 1.0, "Multiplier against Ultimate Thermodynamic Conductor conduction.");
             thermodynamicConductorHeatCapacityMultiplier = multiplier(builder, "thermodynamicConductorHeatCapacityMultiplier", 1.0, "Multiplier against Ultimate Thermodynamic Conductor heat capacity.");
             thermodynamicConductorInsulationMultiplier = multiplier(builder, "thermodynamicConductorInsulationMultiplier", 100.0, "Multiplier against Ultimate Thermodynamic Conductor insulation.");
+            builder.pop();
 
+            builder.push("logistical_transporter");
             logisticalTransporterSpeed = builder
                   .worldRestart()
                   .comment("Ascended Logistical Transporter speed. Values above 100 require multiple updates per tick and are intentionally not supported.")
@@ -110,26 +117,39 @@ public class Config {
                   .worldRestart()
                   .comment("Ascended Logistical Transporter pull delay in ticks. Mekanism standard is 10 ticks for all tiers.")
                   .defineInRange("logisticalTransporterPullDelay", 5, 1, Integer.MAX_VALUE);
+            builder.pop();
 
+            builder.push("pressurized_tube");
             pressurizedTubeCapacityMultiplier = multiplier(builder, "pressurizedTubeCapacityMultiplier", 16.0, "Multiplier against Ultimate Pressurized Tube capacity.");
             pressurizedTubePullAmountMultiplier = multiplier(builder, "pressurizedTubePullAmountMultiplier", 16.0, "Multiplier against Ultimate Pressurized Tube pull amount.");
+            builder.pop();
             builder.pop();
 
             builder.push("storage");
 
+            builder.push("fluid_tank");
             fluidTankCapacityMultiplier = multiplier(builder, "fluidTankCapacityMultiplier", 16.0, "Multiplier against Ultimate Fluid Tank capacity.");
             fluidTankOutputMultiplier = multiplier(builder, "fluidTankOutputMultiplier", 16.0, "Multiplier against Ultimate Fluid Tank output.");
+            builder.pop();
 
+            builder.push("chemical_tank");
             chemicalTankCapacityMultiplier = multiplier(builder, "chemicalTankCapacityMultiplier", 16.0, "Multiplier against Ultimate Chemical Tank capacity.");
             chemicalTankOutputMultiplier = multiplier(builder, "chemicalTankOutputMultiplier", 16.0, "Multiplier against Ultimate Chemical Tank output.");
+            builder.pop();
 
+            builder.push("energy_cube");
             energyCubeCapacityMultiplier = multiplier(builder, "energyCubeCapacityMultiplier", 16.0, "Multiplier against Ultimate Energy Cube capacity.");
             energyCubeOutputMultiplier = multiplier(builder, "energyCubeOutputMultiplier", 16.0, "Multiplier against Ultimate Energy Cube output.");
+            builder.pop();
 
+            builder.push("induction_matrix");
             inductionCellCapacityMultiplier = multiplier(builder, "inductionCellCapacityMultiplier", 16.0, "Multiplier against Ultimate Induction Cell capacity.");
             inductionProviderOutputMultiplier = multiplier(builder, "inductionProviderOutputMultiplier", 16.0, "Multiplier against Ultimate Induction Provider output.");
+            builder.pop();
 
+            builder.push("item_bin");
             binCapacityMultiplier = multiplier(builder, "binCapacityMultiplier", 16.0, "Multiplier against Ultimate Bin capacity.");
+            builder.pop();
             builder.pop();
 
             factoryProcesses = builder
