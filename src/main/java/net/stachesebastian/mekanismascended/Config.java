@@ -86,6 +86,9 @@ public class Config {
         public final ModConfigSpec.DoubleValue inductionCellCapacityMultiplier;
         public final ModConfigSpec.DoubleValue inductionProviderOutputMultiplier;
 
+        public final ModConfigSpec.DoubleValue qioDriveCountMultiplier;
+        public final ModConfigSpec.DoubleValue qioDriveTypeMultiplier;
+
         public final ModConfigSpec.DoubleValue binCapacityMultiplier;
         public final ModConfigSpec.IntValue factoryProcesses;
 
@@ -149,6 +152,11 @@ public class Config {
 
             builder.push("item_bin");
             binCapacityMultiplier = multiplier(builder, "binCapacityMultiplier", 16.0, "Multiplier against Ultimate Bin capacity.");
+            builder.pop();
+
+            builder.push("qio_drive");
+            qioDriveCountMultiplier = multiplier(builder, "qioDriveCountMultiplier", 100.0, "Multiplier against Ultimate/Supermassive QIO Drive item capacity.");
+            qioDriveTypeMultiplier = multiplier(builder, "qioDriveTypeMultiplier", 16.0, "Multiplier against Ultimate/Supermassive QIO Drive type capacity.");
             builder.pop();
             builder.pop();
 

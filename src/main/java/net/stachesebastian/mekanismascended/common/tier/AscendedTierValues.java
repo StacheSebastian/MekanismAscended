@@ -1,16 +1,6 @@
 package net.stachesebastian.mekanismascended.common.tier;
 
-import mekanism.common.tier.BinTier;
-import mekanism.common.tier.CableTier;
-import mekanism.common.tier.ChemicalTankTier;
-import mekanism.common.tier.ConductorTier;
-import mekanism.common.tier.EnergyCubeTier;
-import mekanism.common.tier.FluidTankTier;
-import mekanism.common.tier.InductionCellTier;
-import mekanism.common.tier.InductionProviderTier;
-import mekanism.common.tier.PipeTier;
-import mekanism.common.tier.TransporterTier;
-import mekanism.common.tier.TubeTier;
+import mekanism.common.tier.*;
 import net.minecraft.network.chat.TextColor;
 import net.stachesebastian.mekanismascended.Config;
 
@@ -102,6 +92,14 @@ public class AscendedTierValues {
 
     public static int ascendedBinCapacity() {
         return multiplyInt(BinTier.ULTIMATE.getStorage(), Config.getServerOrDefault(Config.SERVER.binCapacityMultiplier));
+    }
+
+    public static long ascendedQIODriveCount() {
+        return multiplyLong(QIODriveTier.SUPERMASSIVE.getMaxCount(), Config.getServerOrDefault(Config.SERVER.qioDriveCountMultiplier));
+    }
+
+    public static int ascendedQIODriveTypes() {
+        return multiplyInt(QIODriveTier.SUPERMASSIVE.getMaxTypes(), Config.getServerOrDefault(Config.SERVER.qioDriveTypeMultiplier));
     }
 
     public static int ascendedFactoryProcesses() {

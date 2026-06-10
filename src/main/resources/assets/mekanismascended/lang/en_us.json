@@ -5,6 +5,7 @@
   "item.mekanismascended.ascended_control_circuit": "Ascended Control Circuit",
   "item.mekanismascended.ascended_tier_installer": "Ascended Tier Installer",
   "item.mekanismascended.enriched_nether_star": "Enriched Nether Star",
+  "item.mekanismascended.qio_drive_quantum": "Quantum QIO Drive",
 
   "chemical.mekanismascended.transcendent_essence": "Transcendent Essence",
 
@@ -90,6 +91,7 @@
   "mekanismascended.configuration.energy_cube": "Energy Cube",
   "mekanismascended.configuration.induction_matrix": "Induction Matrix",
   "mekanismascended.configuration.item_bin": "Item Bin",
+  "mekanismascended.configuration.qio_drive": "QIO Drive",
   "mekanismascended.configuration.fluidTankCapacityMultiplier": "Capacity Multiplier",
   "mekanismascended.configuration.fluidTankCapacityMultiplier.tooltip": "Multiplier against Ultimate Fluid Tank capacity.",
   "mekanismascended.configuration.fluidTankOutputMultiplier": "Output Multiplier",
@@ -108,6 +110,10 @@
   "mekanismascended.configuration.inductionProviderOutputMultiplier.tooltip": "Multiplier against Ultimate Induction Provider output.",
   "mekanismascended.configuration.binCapacityMultiplier": "Capacity Multiplier",
   "mekanismascended.configuration.binCapacityMultiplier.tooltip": "Multiplier against Ultimate Bin capacity.",
+  "mekanismascended.configuration.qioDriveCountMultiplier": "Item Capacity Multiplier",
+  "mekanismascended.configuration.qioDriveCountMultiplier.tooltip": "Multiplier against Ultimate/Supermassive QIO Drive item capacity.",
+  "mekanismascended.configuration.qioDriveTypeMultiplier": "Type Capacity Multiplier",
+  "mekanismascended.configuration.qioDriveTypeMultiplier.tooltip": "Multiplier against Ultimate/Supermassive QIO Drive type capacity.",
   "mekanismascended.configuration.factoryProcesses": "Factory Processes",
   "mekanismascended.configuration.factoryProcesses.tooltip": "Number of processing slots in Ascended Factories.",
 

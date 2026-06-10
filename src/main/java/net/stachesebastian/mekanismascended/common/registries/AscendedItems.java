@@ -2,19 +2,20 @@ package net.stachesebastian.mekanismascended.common.registries;
 
 import mekanism.common.registration.impl.ItemDeferredRegister;
 import mekanism.common.registration.impl.ItemRegistryObject;
+import mekanism.common.tier.QIODriveTier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.neoforged.bus.api.IEventBus;
 import net.stachesebastian.mekanismascended.MekanismAscended;
 import net.stachesebastian.mekanismascended.common.item.AscendedItem;
 import net.stachesebastian.mekanismascended.common.item.AscendedItemAlloy;
+import net.stachesebastian.mekanismascended.common.item.AscendedItemQIODrive;
 import net.stachesebastian.mekanismascended.common.item.AscendedItemTierInstaller;
 import net.stachesebastian.mekanismascended.common.tier.AscendedAlloyTier;
 
 public class AscendedItems {
     public static final ItemDeferredRegister ITEMS = new ItemDeferredRegister(MekanismAscended.MODID);
 
-    //Items
     public static final ItemRegistryObject<AscendedItemAlloy> ALLOY_TRANSCENDENT = ITEMS.register(
           "alloy_transcendent",
           () -> new AscendedItemAlloy(AscendedAlloyTier.TRANSCENDENT, new Item.Properties().rarity(Rarity.EPIC))
@@ -35,8 +36,10 @@ public class AscendedItems {
             () -> new Item(new Item.Properties())
     );
 
-    //BlockItems
-
+    public static final ItemRegistryObject<AscendedItemQIODrive> QUANTUM_QIO_DRIVE = ITEMS.registerItem(
+            "qio_drive_quantum",
+            properties -> new AscendedItemQIODrive(QIODriveTier.SUPERMASSIVE, properties)
+    );
 
     private AscendedItems() {}
 
