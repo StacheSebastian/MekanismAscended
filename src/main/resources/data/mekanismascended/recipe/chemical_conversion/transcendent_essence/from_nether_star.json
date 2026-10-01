@@ -2,10 +2,10 @@
   "type": "mekanism:chemical_conversion",
   "input": {
     "count": 1,
-    "item": "mekanismascended:enriched_nether_star"
+    "item": "minecraft:nether_star"
   },
   "output": {
-    "amount": 80,
+    "amount": 10,
     "id": "mekanismascended:transcendent_essence"
   }
 }
