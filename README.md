@@ -33,7 +33,7 @@ These values can also be adjusted in game through NeoForge's mod configuration s
 
 You may include Mekanism: Ascended in modpacks.
 
-I’d appreciate it if the mod is downloaded through [CurseForge](www.curseforge.com/minecraft/mc-mods/mekanismascended) or [Modrinth](https://modrinth.com/mod/mekanismascended), since that helps support me. It is not required, though.
+I’d appreciate it if the mod is downloaded through [CurseForge](https://curseforge.com/minecraft/mc-mods/mekanismascended) or [Modrinth](https://modrinth.com/mod/mekanismascended), since that helps support me. It is not required, though.
 
 ## Feedback
 
