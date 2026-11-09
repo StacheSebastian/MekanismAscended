@@ -15,7 +15,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
@@ -44,16 +43,6 @@ public abstract class GuiFactoryMixin extends GuiConfigurableTile<TileEntityFact
     )
     private int mekanismAscended$getProcesses(FactoryTier tier) {
         return AscendedFactoryUtil.isAscendedFactory(tile) ? AscendedTierValues.ascendedFactoryProcesses() : tier.processes;
-    }
-
-    @ModifyVariable(method = "addGuiElements", at = @At("STORE"), name = "baseX")
-    private int mekanismAscended$getBaseX(int baseX) {
-        return AscendedFactoryUtil.isAscendedFactory(tile) ? 27 : baseX;
-    }
-
-    @ModifyVariable(method = "addGuiElements", at = @At("STORE"), name = "baseXMult")
-    private int mekanismAscended$getBaseXMult(int baseXMult) {
-        return AscendedFactoryUtil.isAscendedFactory(tile) ? 19 : baseXMult;
     }
 
     @ModifyConstant(method = "addGuiElements", constant = @Constant(intValue = 172))

@@ -6,6 +6,7 @@ import net.stachesebastian.mekanismascended.common.tile.factory.IAscendedFactory
 
 public final class AscendedFactoryUtil {
     private static final int ULTIMATE_FACTORY_PROCESSES = 9;
+    // Must match Mekanism's Ultimate lane spacing (baseXMult in GuiFactory and the factory tiles' addSlots).
     private static final int FACTORY_LANE_SPACING = 19;
     private static final int ULTIMATE_FACTORY_INVENTORY_X_OFFSET = 26;
 
