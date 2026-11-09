@@ -3,6 +3,7 @@ plugins {
     id 'maven-publish'
     id 'idea'
     id 'net.neoforged.moddev' version '2.0.141'
+    id 'com.modrinth.minotaur' version '2.10.0'
 }
 
 version = mod_version
@@ -137,6 +138,122 @@ publishing {
             url = layout.projectDirectory.dir('repo')
         }
     }
+}
+
+// Release publishing: ./gradlew publishMod (or modrinth / publishCurseForge on their own).
+// Tokens are read from ~/.gradle/gradle.properties (modrinth_token, curseforge_token)
+// or the MODRINTH_TOKEN / CURSEFORGE_TOKEN environment variables. Never commit them.
+def releaseChangelog = file('CHANGELOG.md')
+
+modrinth {
+    token = findProperty('modrinth_token') ?: System.getenv('MODRINTH_TOKEN')
+    projectId = modrinth_project_id
+    versionNumber = mod_version
+    versionName = "${mod_name} ${mod_version}"
+    versionType = release_type
+    uploadFile = jar
+    gameVersions = [minecraft_version]
+    loaders = ['neoforge']
+    changelog = releaseChangelog.exists() ? releaseChangelog.text : ''
+    dependencies {
+        required.project 'mekanism'
+    }
+}
+
+tasks.named('modrinth') {
+    notCompatibleWithConfigurationCache('Minotaur does not support the configuration cache')
+}
+
+// Uploads through CurseForge's official upload API (https://support.curseforge.com/en/support/solutions/articles/9000197321-curseforge-upload-api).
+// -Pcurseforge_dry_run=true resolves the game versions and prints the metadata without uploading.
+def curseforgeToken = providers.gradleProperty('curseforge_token').orElse(providers.environmentVariable('CURSEFORGE_TOKEN'))
+def curseforgeDryRun = providers.gradleProperty('curseforge_dry_run').map { it.toBoolean() }.orElse(false)
+def curseforgeProjectId = curseforge_project_id
+def curseforgeDisplayName = "${mod_name} ${mod_version}".toString()
+def curseforgeReleaseType = release_type
+def curseforgeMinecraftVersion = minecraft_version
+
+tasks.register('publishCurseForge') {
+    group = 'publishing'
+    description = 'Uploads the mod jar to CurseForge through the CurseForge upload API'
+    notCompatibleWithConfigurationCache('Builds the HTTP upload at execution time')
+    def jarFile = tasks.named('jar').flatMap { it.archiveFile }
+    inputs.file(jarFile)
+
+    doLast {
+        if (!curseforgeToken.present) {
+            throw new GradleException('No CurseForge token: set curseforge_token in ~/.gradle/gradle.properties or the CURSEFORGE_TOKEN environment variable')
+        }
+        def api = 'https://minecraft.curseforge.com/api'
+        def client = java.net.http.HttpClient.newHttpClient()
+        def send = { java.net.http.HttpRequest.Builder request ->
+            def response = client.send(request.header('X-Api-Token', curseforgeToken.get()).build(),
+                    java.net.http.HttpResponse.BodyHandlers.ofString())
+            if (response.statusCode() != 200) {
+                throw new GradleException("CurseForge API ${response.uri()} returned ${response.statusCode()}: ${response.body()}")
+            }
+            new groovy.json.JsonSlurper().parseText(response.body())
+        }
+        def get = { String path -> send(java.net.http.HttpRequest.newBuilder(URI.create(api + path)).GET()) }
+
+        // The upload API wants numeric game version IDs, so look them up by name.
+        def versionTypes = get('/game/version-types')
+        def typeIds = { Closure<Boolean> slugMatches -> versionTypes.findAll { slugMatches(it.slug as String) }*.id as Set }
+        def versions = get('/game/versions')
+        def versionId = { Set types, String name ->
+            def match = versions.find { it.gameVersionTypeID in types && it.name == name }
+            if (match == null) throw new GradleException("CurseForge has no game version named '${name}'")
+            match.id
+        }
+        def minecraftTypes = typeIds { it.startsWith('minecraft-') }
+        def loaderTypes = typeIds { it == 'modloader' }
+        def javaTypes = typeIds { it == 'java' }
+        def environmentTypes = typeIds { it == 'environment' }
+
+        def metadata = groovy.json.JsonOutput.toJson([
+                changelog    : releaseChangelog.exists() ? releaseChangelog.text : '',
+                changelogType: 'markdown',
+                displayName  : curseforgeDisplayName,
+                releaseType  : curseforgeReleaseType,
+                gameVersions : [
+                        versionId(minecraftTypes, curseforgeMinecraftVersion),
+                        versionId(loaderTypes, 'NeoForge'),
+                        versionId(javaTypes, 'Java 21'),
+                        versionId(environmentTypes, 'Client'),
+                        versionId(environmentTypes, 'Server')
+                ],
+                relations    : [projects: [[slug: 'mekanism', type: 'requiredDependency']]]
+        ])
+
+        def file = jarFile.get().asFile
+        if (curseforgeDryRun.get()) {
+            logger.lifecycle("Dry run, not uploading ${file.name} to CurseForge project ${curseforgeProjectId}:\n${groovy.json.JsonOutput.prettyPrint(metadata)}")
+            return
+        }
+
+        def boundary = "----MekanismAscended${System.nanoTime()}"
+        def head = ("--${boundary}\r\n" +
+                "Content-Disposition: form-data; name=\"metadata\"\r\n" +
+                "Content-Type: application/json\r\n\r\n" +
+                "${metadata}\r\n" +
+                "--${boundary}\r\n" +
+                "Content-Disposition: form-data; name=\"file\"; filename=\"${file.name}\"\r\n" +
+                "Content-Type: application/java-archive\r\n\r\n").toString()
+        def tail = "\r\n--${boundary}--\r\n".toString()
+        def body = java.net.http.HttpRequest.BodyPublishers.ofByteArrays([
+                head.getBytes('UTF-8'), file.bytes, tail.getBytes('UTF-8')
+        ])
+        def result = send(java.net.http.HttpRequest.newBuilder(URI.create("${api}/projects/${curseforgeProjectId}/upload-file"))
+                .header('Content-Type', "multipart/form-data; boundary=${boundary}")
+                .POST(body))
+        logger.lifecycle("Uploaded ${file.name} to CurseForge (file id ${result.id})")
+    }
+}
+
+tasks.register('publishMod') {
+    group = 'publishing'
+    description = 'Uploads the mod jar to Modrinth and CurseForge'
+    dependsOn 'modrinth', 'publishCurseForge'
 }
 
 idea {

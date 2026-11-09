@@ -1,0 +1,3 @@
+- Fixed the Transcendent Essence recipes `from_nether_star` and `from_enriched_nether_star` having their inputs swapped (#4)
+- Moved the Ascended fluid tank and bin overrides into their tile classes
+- Removed unused GUI spacing mixins
